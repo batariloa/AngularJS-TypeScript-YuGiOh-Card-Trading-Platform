@@ -1,0 +1,28 @@
+
+
+
+<div name='containter' 
+style="width: 1124px;
+  font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif; ">
+
+<div style="width: 100%; height:250px; ;">
+  COUNT:  {{countProizvod$ |async}}
+  <div style="float:left; width:500px; height:200px">
+<img style="width: 600px; height: 200px; ;" src="/assets/img/yugiohlogo.png"></div>
+</div>
+<div style="width: 800px; " class="my-grid-container">
+
+
+ 
+
+  <div *ngFor="let item of cardData"  style="width :400px ;border-radius: 10px; margin-bottom:5px;  color:white;background:#fc5b32 " >
+    
+
+
+
+<a [routerLink]="['karta',{id:item.id}]" > <button class="btn btn-success pull-right" style="background-color: #6cdfc5;" > Pregled</button></a>
+
+</div>
+
+<router-outlet></router-outlet>
+ </div>
