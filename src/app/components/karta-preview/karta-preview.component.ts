@@ -19,43 +19,59 @@ export class KartaPreviewComponent implements OnInit {
   @Input() idKarte:number  = 0;
   @Output() alert: EventEmitter<any> = new EventEmitter();
 
-  karta:Proizvod = {} as Proizvod;
+  oglas:Proizvod = {} as Proizvod;
   sub?:Subscription;
 
 
    cart: Observable<ICart>;
   public cardData:any= {};
   updateItem = false;
+ 
   constructor(private route:ActivatedRoute, private api:ApiService, private store:Store<AppState>) { 
 
     this.cart = store.select('cart');
-    this.karta.price = 400;
-    this.karta.id = this.idKarte;
+
+    this.oglas.price = 400;
+    this.oglas.id = this.idKarte;
+
+    
   }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       const id = Number.parseInt(params['id']);
       this.idKarte = id;
-      this.karta.id = id;
-
+    
+      this.nadjiOglas();
       this.nadjiKartu();
+     
    }  );
     
   }
 
-  async nadjiKartu(){
-    await (this.api.getCards(this.idKarte))!.subscribe((res:any)=>{
+ nadjiKartu(){
+    (this.api.getCards(this.idKarte))!.subscribe((res:any)=>{
       this.cardData = res.data[0];
           console.log("yipe");
           console.log(this.cardData);
         });
     }
     
+    nadjiOglas(){
+      (this.api.getOglas(this.oglas.id))!.subscribe((res:any)=>{
+        this.oglas = res.oglasi
+        
+            console.log("yiplsade");
+            console.log(res.oglasi);
+          
+          });
+      }
+
     dodajUKorpu(){
 
       console.log(this.cart)
-      this.store.dispatch(CartActions.AddToCart(this.karta))
+      this.store.dispatch(CartActions.AddToCart(this.oglas))
+      
       
     }
 

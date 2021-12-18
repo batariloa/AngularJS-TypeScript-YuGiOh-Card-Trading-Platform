@@ -7,4 +7,20 @@ export const selectCountProducts  = createSelector(
         return state.items.length;
 
     }
+
+
+)
+
+export const selectPriceKorpa = createSelector(
+
+    createFeatureSelector('cart'),
+    (state: ICart)=>
+    {
+        var sum = 0;
+        state.items.forEach(element => {
+            sum= sum +element.price;
+            console.log(sum);
+        });
+        return sum;
+    }
 )

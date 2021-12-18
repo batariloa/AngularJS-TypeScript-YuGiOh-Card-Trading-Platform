@@ -16,15 +16,14 @@ import { selectCountProducts } from '../redux/cart.selectors';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-  public cardData:any[] = [];
+  public oglasiData:any[] = [];
 input:number;
-countProizvod$: Observable<number>  ;
+
 
 
   constructor(private route:ActivatedRoute, private router:Router, private api:ApiService, private store:Store<AppState>) 
   {
-    this.countProizvod$ = store.select(selectCountProducts);
-    console.log(this.countProizvod$)
+    
   this.input=0;  
    }
 
@@ -39,10 +38,12 @@ countProizvod$: Observable<number>  ;
   }
 
   async nadjiKarte(){
-    (this.api.getAllCards())!.subscribe((res:any)=>{
-      this.cardData = res.data;
-      console.log(this.cardData)
+   
+    (this.api.getOglasi())!.subscribe((res:any)=>{
       
+     this.oglasiData = res.oglasi  ;
+
+     console.log(this.oglasiData)
     });
 }
 }

@@ -14,6 +14,7 @@ import { ApiService } from './services/api.service';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     KartaPreviewComponent,
     FeedComponent,
+    NavbarComponent,
 
   ],
   imports: [
