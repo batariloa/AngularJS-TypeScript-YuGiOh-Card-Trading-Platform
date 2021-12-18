@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Karta } from 'src/app/models/karta';
+import { Karta } from 'src/app/redux/cart.model';
+
 
 @Component({
   selector: 'app-cart',

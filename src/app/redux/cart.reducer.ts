@@ -4,6 +4,7 @@ import {  initialState, ICart} from "./cart.model";
 import * as ActionsCart from "../redux/cart.model.action"
 
 import { Action, createReducer, on } from "@ngrx/store";
+import { state } from "@angular/animations";
 
 
 export const reducer = createReducer(
@@ -11,6 +12,7 @@ export const reducer = createReducer(
     
     on(ActionsCart.AddToCart, (entries, product) => {
     const entriesClone: ICart = JSON.parse(JSON.stringify(entries));
+    
     entriesClone.items.push(product)
       return entriesClone
     }),

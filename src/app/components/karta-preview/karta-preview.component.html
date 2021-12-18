@@ -1,13 +1,21 @@
 
-<div style="width:400px; height: 400px;">
-    <div style="display: block ; width: 300px; height: 100px;">
-      {{this.cardData.name}}
+<div style="width:220px; height: 250px;">
+    <div style="display: block ; width: 260px; height: 40px;">
+   
+    {{cardData.name}}
 
     </div>
-    <div style="display: block ; width: 300px; height: 100px;">
-      {{this.cardData.desc}}
-      
+    <div style="display: block ; width: 220px; height: 140px;">
+    <div style="width: 100%;  margin: 0 auto;" >
+      <img style="width: 100px; height: 155px;
+       margin-left: auto;
+  margin-right: auto;
+  display: block;" [src]="cardData.card_images[0].image_url">
     </div>
-   <button (click)="dodajUKorpu()">Dodaj</button>
-  {{this.cart}}
+    <div style="margin-top: 20px;">
+      <button style="display: block; float: right; margin-right: 10px;"  (click)="dodajUKorpu()">Dodaj</button>
+    </div>
+    </div>
+   
+  
   </div>

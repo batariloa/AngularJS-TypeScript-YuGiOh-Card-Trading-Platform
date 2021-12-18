@@ -1,6 +1,3 @@
-
-
-
 <div name='containter' 
 style="width: 1124px;
   font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif; ">
@@ -15,15 +12,13 @@ style="width: 1124px;
 
  
 
-  <div *ngFor="let item of oglasiData"  style="width :400px ;border-radius: 10px; margin-bottom:5px;  color:white;background:#fc5b32 " >
-    {{item.name}}
-    <app-karta-preview [idKarte]="item.id"></app-karta-preview>
+  <div *ngFor="let item of oglasiData"  style="width :220px ;border-radius: 10px; margin-bottom:5px;  color:white;background:#fc5b32 " >
 
 
+<app-karta-preview [oglas]="item"></app-karta-preview>
 
-<a [routerLink]="['karta',{id:item.cardid}]" > <button class="btn btn-success pull-right" style="background-color: #6cdfc5;" > Pregled</button></a>
 
 </div>
 
-<router-outlet></router-outlet>
+
  </div>

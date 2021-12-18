@@ -1,4 +1,4 @@
-import { Karta } from "../models/karta";
+
 
 export interface ICart {
     items: Proizvod[];
@@ -11,6 +11,7 @@ export interface Proizvod {
     count: number;
     price: number;
     karta: Karta;
+    cardid:number;
 }
 
 export const initialState:ICart= {
@@ -19,7 +20,23 @@ export const initialState:ICart= {
     sum:0
 };
 
-export interface Post {
-    likes:number,
-    text:String
+
+export class Karta {
+    public author:string;
+    public likes:number;
+    public text:string;
+    public date:string;
+    public id:number;
+    
+
+    constructor(author:string, likes:number,text:string,date:string,id:number){
+
+        this.author=author;
+        this.date=date;
+        this.likes=likes;
+        this.text=text;
+        this.id=id;
+
+    }
+
 }

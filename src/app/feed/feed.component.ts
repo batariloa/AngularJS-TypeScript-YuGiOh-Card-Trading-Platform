@@ -5,10 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
+import { KartaPreviewComponent } from '../components/karta-preview/karta-preview.component';
 import { ApiService } from 'src/app/services/api.service';
 import { AppState } from '../models/app.state';
-import { selectCountProducts } from '../redux/cart.selectors';
+import { Proizvod } from '../redux/cart.model';
+
 
 @Component({
   selector: 'app-feed',
@@ -16,7 +17,7 @@ import { selectCountProducts } from '../redux/cart.selectors';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-  public oglasiData:any[] = [];
+  public oglasiData:Proizvod[] = [];
 input:number;
 
 
@@ -41,9 +42,10 @@ input:number;
    
     (this.api.getOglasi())!.subscribe((res:any)=>{
       
-     this.oglasiData = res.oglasi  ;
+     this.oglasiData = res.oglasi;
 
      console.log(this.oglasiData)
+     console.log("yup")
     });
 }
 }
