@@ -1,0 +1,18 @@
+<div style="display: block; width: 450px; position: fixed; right:20px; top:100px
+; background-color: black; min-height: 100px; padding-top: 20px;" 
+
+>
+<p *ngIf="cartItems.length==0 " style="color:white">Korpa je prazna.</p>
+<div class="red-container" *ngFor="let item of cart |async">
+
+
+    <div class="red">
+        <img style="width: 50px" [src]="item.karta.card_images[0].image_url">
+    </div>
+   <div class="red" style="width: 30%;" >{{item.karta.name}} </div>
+   <div class="red">{{item.price}}</div>
+   <div class="red">{{item.count}}ss</div> 
+   <div class="red" style="width: 50px"><button (click)="obrisIzKorpe(item)">-</button></div>
+</div>
+
+</div>

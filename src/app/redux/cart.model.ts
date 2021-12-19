@@ -9,6 +9,7 @@ export interface Proizvod {
     id: number;
     name: string;
     count: number;
+    quantity:number;
     price: number;
     karta: Karta;
     cardid:number;
@@ -21,22 +22,20 @@ export const initialState:ICart= {
 };
 
 
-export class Karta {
-    public author:string;
-    public likes:number;
-    public text:string;
-    public date:string;
-    public id:number;
+export interface Karta {
+    author:string;
+    likes:number;
+    text:string;
+    date:string;
+    id:number;
+    name: string;
+    card_images:slike[];
     
-
-    constructor(author:string, likes:number,text:string,date:string,id:number){
-
-        this.author=author;
-        this.date=date;
-        this.likes=likes;
-        this.text=text;
-        this.id=id;
-
-    }
+ 
 
 }
+
+export interface slike{
+    image_url:string;
+
+}  

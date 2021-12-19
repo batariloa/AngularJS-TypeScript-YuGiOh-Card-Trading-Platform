@@ -1,8 +1,15 @@
-<nav class="navbar navbar-dark bg-primary mb-4">
+<nav class="navbar navbar-dark bg-primary mb-4"  >
     <div class="container">
-        <a href="#" class="navbar-brand">Pretraga soba hotela</a>
-
+        <a href="#" class="navbar-brand" style="color:white">Ne pravi se jos uvek UI</a>
+       
     </div>
+    <button (click)="prikaziKorpu()">
+       
+    <div>
     COUNT:  {{countProizvod$ |async}}
-    {{sumProizvod$ |async}} RSD
-    </nav>
+    
+    </div>
+
+</button>
+  
+    </nav><app-cart-preview *ngIf="showCart" style="float: right;"></app-cart-preview> 

@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CartPreviewComponent } from './components/cart-preview/cart-preview.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     KartaPreviewComponent,
     FeedComponent,
     NavbarComponent,
+    CartPreviewComponent,
 
   ],
   imports: [

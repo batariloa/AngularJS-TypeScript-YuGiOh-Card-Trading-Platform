@@ -1,0 +1,15 @@
+.red {
+    width: 15%;
+    float: left;
+    
+}
+
+.red-container {
+display:table;
+width: 95%;
+margin-right: auto;
+
+margin-left: auto;
+margin-bottom: 10px;
+background-color: beige;
+}

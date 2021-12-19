@@ -16,3 +16,7 @@ export const ADD_TO_CART = 'ADD_TO_CART';
     ADD_TO_CART, 
     props<Proizvod>()
   );
+  export const DeleteFromCart = createAction(
+   DELETE_FROM_CART, 
+    props<Proizvod>()
+  );

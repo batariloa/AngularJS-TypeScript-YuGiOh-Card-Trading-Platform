@@ -24,3 +24,13 @@ export const selectPriceKorpa = createSelector(
         return sum;
     }
 )
+
+export const selectCart  = createSelector(
+    createFeatureSelector('cart'), 
+    (state: ICart) => {
+        return state.items;
+
+    }
+
+
+)
