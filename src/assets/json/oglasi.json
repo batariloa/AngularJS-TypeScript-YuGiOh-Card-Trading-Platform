@@ -2,48 +2,97 @@
     "oglasi": [
     {
     "id": 1,
-    "sellerId":1,
+   
     "cardid": 93221206,
-    "price": 499
-    ,
-        "count": 1
+    "price": 499,
+       
+        "user":
+        {
+            "id":3,
+            "username":"Kale34",
+            "posts": 43,
+            "memberSince":"09.02.2020."
+        
+        }
     },
     {
         "id": 2,
-        "sellerId":2,
+        
         "cardid": 6983839,
         "price": 233,
-        "count": 2
+      
+        "user":
+        {
+            "id":3,
+            "username":"Kale34",
+            "posts": 43,
+            "memberSince":"09.02.2020."
+        
+        }
+        
         },
         {
             "id": 4,
-            "sellerId":1,
+           
             "cardid": 23771716,
             "price":321312,
-            "count": 4
+          
+            "user":
+            {
+                "id":1,
+                "username":"Dzoni34",
+                "posts": 43,
+                "memberSince":"09.02.2020."
+            
+            }
             },
             {
                 "id": 3,
-                "sellerId":1,
+          
                 "cardid": 43230671,
-                "price": 900
-                ,
-        "count": 2
+                "price": 900,
+              
+                "user":
+                {
+                    "id":2,
+                    "username":"GoKiMac",
+                    "posts": 1,
+                    "memberSince":"25.04.2021."
+                
+                
+                }
                 },
                 {
                     "id": 5,
-                    "sellerId":1,
+                  
                     "cardid": 6983839,
                     "price": 499
                     ,
-        "count": 1
+                  
+                     "user":
+                     {
+                         "id":1,
+                         "username":"Dzoni34",
+                         "posts": 43,
+                         "memberSince":"09.02.2020."
+                     
+                     }
+                     
                     },
                     {
                         "id": 6,
-                        "sellerId":1,
+                        
                         "cardid": 6983839,
                         "price": 999,
-                        "count": 4
+                      
+                        "user":
+                        {
+                            "id":2,
+                            "username":"GoKiMac",
+                            "posts": 1,
+                            "memberSince":"25.04.2021."
+                        
+                        }
                         
                         }
     

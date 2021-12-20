@@ -31,6 +31,7 @@ export class KartaPreviewComponent implements OnInit {
   
   
     this.oglas = {} as Proizvod
+    this.oglas.count = 1;
     this.oglas.karta = {} as Karta;
     this.listaProizvoda = this.store.select(selectCart);
     
@@ -51,6 +52,7 @@ export class KartaPreviewComponent implements OnInit {
     (this.api.getCards(this.oglas.cardid))!.subscribe((res:any)=>{
       this.cardData = res.data[0];
       this.oglas.karta = res.data[0]
+      this.oglas.count = 1;
           console.log("yipe");
      
         });

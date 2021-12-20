@@ -5,14 +5,15 @@ export interface ICart {
     cnt: number; //Counter
     sum: number; //Cash summary
 }
-export interface Proizvod {
-    id: number;
-    name: string;
-    count: number;
-    quantity:number;
-    price: number;
-    karta: Karta;
-    cardid:number;
+export class Proizvod {
+    id: number =0;
+    name: string = "";
+    count: number = 0;
+    quantity:number = 0;
+    price: number= 0;
+    karta: Karta = {} as Karta;
+    user:User = {} as User;
+    cardid:number = 0;
 }
 
 export const initialState:ICart= {
@@ -39,3 +40,10 @@ export interface slike{
     image_url:string;
 
 }  
+
+export interface User {
+    id:number,
+    username:string,
+    posts:number,
+    memberSince: string
+}

@@ -18,8 +18,7 @@ export const reducer = createReducer(
       
       if(element.id===product.id){
         element.count++;
-        console.log("br" + element.quantity)
-        console.log("nrnr" + entriesClone.items)
+      
         dodaj = false;
     
       }
@@ -38,7 +37,7 @@ on(ActionsCart.DeleteFromCart, (entries, product) => {
 
   entriesClone.items.forEach(element => {
     if(element.id===product.id && element.count==1){
-      console.log(product.id +" blom "+ element.id)
+     
       entriesClone.items.splice(entriesClone.items.findIndex(function(i){
    
         return i.id === product.id;

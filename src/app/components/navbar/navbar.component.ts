@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of, Subject } from 'rxjs';
 import { AppState } from 'src/app/models/app.state';
 import { selectCountProducts, selectPriceKorpa } from 'src/app/redux/cart.selectors';
-
+import { DoBootstrap } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

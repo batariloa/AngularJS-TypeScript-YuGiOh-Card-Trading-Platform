@@ -23,4 +23,7 @@ export class ApiService {
     getOglas(id:number){
       return this.http.get("assets/json/oglasi.json/oglasi?id=3")
     }
+    getUser(){
+      return this.http.get("assets/json/users.json/")
+    }
 }
