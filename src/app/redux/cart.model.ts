@@ -14,8 +14,16 @@ export class Proizvod {
     karta: Karta = {} as Karta;
     user:User = {} as User;
     cardid:number = 0;
+   
 }
 
+export interface card_price{
+
+
+    amazon_price: number;
+    cardmarket__price:number;
+    tcgplayer_price:number;
+}
 export const initialState:ICart= {
     items:[] as Proizvod[],
     cnt:0,
@@ -31,6 +39,7 @@ export interface Karta {
     id:number;
     name: string;
     card_images:slike[];
+    card_prices:card_price[];
     
  
 

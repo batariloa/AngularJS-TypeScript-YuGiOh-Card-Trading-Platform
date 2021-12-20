@@ -1,39 +1,38 @@
-ul.dropdown-cart{
-    min-width:250px;
-}
-ul.dropdown-cart li .item{
-    display:block;
-    padding:3px 10px;
-    margin: 3px 0;
-}
-ul.dropdown-cart li .item:hover{
-    background-color:#f3f3f3;
-}
-ul.dropdown-cart li .item:after{
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
+body {
+    background-color: purple
 }
 
-ul.dropdown-cart li .item-left{
-    float:left;
+.form-inputs {
+    position: relative
 }
-ul.dropdown-cart li .item-left img,
-ul.dropdown-cart li .item-left span.item-info{
-    float:left;
+
+.form-inputs .form-control {
+    height: 45px
 }
-ul.dropdown-cart li .item-left span.item-info{
-    margin-left:10px;   
+
+.form-inputs .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #000
 }
-ul.dropdown-cart li .item-left span.item-info span{
-    display:block;
+
+.form-inputs i {
+    position: absolute;
+    right: 10px;
+    top: 15px
 }
-ul.dropdown-cart li .item-right{
-    float:right;
+
+.shop-bag {
+    background-color: #000;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    font-size: 25px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center
 }
-ul.dropdown-cart li .item-right button{
-    margin-top:14px;
+
+.qty {
+    font-size: 12px
 }

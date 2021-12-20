@@ -18,7 +18,7 @@ export const selectPriceKorpa = createSelector(
     {
         var sum = 0;
         state.items.forEach(element => {
-            sum= sum +element.price;
+            sum= sum +element.price * element.count;
             console.log(sum);
         });
         return sum;

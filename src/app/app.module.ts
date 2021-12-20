@@ -16,6 +16,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CartPreviewComponent } from './components/cart-preview/cart-preview.component';
+import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
+import { SessionServiceService } from './services/session-service.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { CartPreviewComponent } from './components/cart-preview/cart-preview.com
     FeedComponent,
     NavbarComponent,
     CartPreviewComponent,
+    ProductPreviewComponent,
 
   ],
   imports: [
@@ -32,7 +35,7 @@ import { CartPreviewComponent } from './components/cart-preview/cart-preview.com
     AppRoutingModule, FormsModule,
     CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer})
   ],
-  providers: [ApiService],
+  providers: [ApiService, SessionServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

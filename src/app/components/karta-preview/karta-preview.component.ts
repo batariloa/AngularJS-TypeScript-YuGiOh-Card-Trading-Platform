@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 import { AppState } from 'src/app/models/app.state';import { ICart, Karta, Proizvod } from 'src/app/redux/cart.model';
@@ -16,7 +16,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class KartaPreviewComponent implements OnInit {
   @Input() oglas: Proizvod = {} as Proizvod;
-  @Output() alert: EventEmitter<any> = new EventEmitter();
+  @Output() prikaziViseEmitter: EventEmitter<any> = new EventEmitter();
 
   listaProizvoda:Observable<Proizvod[]> = new Observable;
   trenutniBrojUKorpi:number = 0;
@@ -27,7 +27,7 @@ export class KartaPreviewComponent implements OnInit {
 
 
 
-  constructor(private route:ActivatedRoute, private api:ApiService, private store:Store<AppState>) { 
+  constructor(private router:Router, private api:ApiService, private store:Store<AppState>) { 
   
   
     this.oglas = {} as Proizvod
@@ -39,11 +39,7 @@ export class KartaPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
- 
       this.nadjiKartu();
-    
-    
   
   }
 
@@ -54,6 +50,7 @@ export class KartaPreviewComponent implements OnInit {
       this.oglas.karta = res.data[0]
       this.oglas.count = 1;
           console.log("yipe");
+          console.log(res.data[0])
      
         });
     }
@@ -63,8 +60,12 @@ export class KartaPreviewComponent implements OnInit {
       
       this.store.dispatch(CartActions.AddToCart(this.oglas))
 
-     
-      
       
     }
+
+    prikaziVise(){
+      console.log("prikazi vise"+ this.oglas.id) 
+      this.prikaziViseEmitter.emit(this.oglas);//salje podatke roditelju
+      
+  }
 }

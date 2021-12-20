@@ -2,7 +2,7 @@
 <div style="width:220px; height: 370px; float:right; margin: 0 auto" *ngIf="cardData">
     <div style="display: block ; width: 260px; height: 40px;">
    
-    {{cardData.name}}
+  
 
     </div>
     <div style="display: block ; width: 220px; height: 140px; margin:0 auto">
@@ -14,8 +14,9 @@
     </div>
     <div style="margin-top: 20px; margin-left: auto; margin-right: auto; text-align: center;">
       <div class='cvp'>
-        <h5 class="card-title font-weight-bold">Yail wrist watch</h5>
-        <p class="card-text">{{oglas.price}} RSD</p> <a  class="btn details px-auto">view details</a><br /> <a href="#" (click)="dodajUKorpu()" class="btn cart px-auto">ADD TO CART</a>
+        <h5 class="card-title font-weight-bold">  {{cardData.name}}</h5>
+        <p class="card-text">{{oglas.price}} RSD</p> <a  (click)="prikaziVise()" class="btn details px-auto">view details</a><br /> 
+        <a href="#" (click)="dodajUKorpu()" class="btn cart px-auto">ADD TO CART</a>
     </div>
     </div>
     </div>

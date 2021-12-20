@@ -1,19 +1,27 @@
 <div name='containter' 
-style="width: 1124px;
+style="width: 100%; 
   font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif; ">
 
-<div style="width: 800px; " class="my-grid-container">
-
+<div *ngIf="prikaziDetalje" style="position: fixed; width: 600px; height:100%; right:5px"> 
+  <app-product-preview [proizvod]="catchProizvod"></app-product-preview></div>
 
  
+<div style="width: 800px; margin:0 auto; background-color:#F5F5F5;" class="my-grid-container" >
 
-  <div *ngFor="let item of oglasiData"  style="width :220px ;border-radius: 10px; margin-bottom:5px;  color:white;background:#fc5b32 " >
 
 
-<app-karta-preview [oglas]="item"></app-karta-preview>
+  <div *ngFor="let item of oglasiData"  style="width :220px ;border-radius: 10px; margin-bottom:5px;   color:white;
+  background: #FF2626;
+  margin: 0 auto;" >
+
+
+<app-karta-preview [oglas]="item" (prikaziViseEmitter)="displayProductPreview($event)" ></app-karta-preview>
 
 
 </div>
 
 
- </div>
+
+</div>
+
+</div>
