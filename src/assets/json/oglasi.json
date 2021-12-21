@@ -2,7 +2,7 @@
     "oglasi": [
     {
     "id": 1,
-   
+    "quantity":4,
     "cardid": 93221206,
     "price": 499,
        
@@ -17,7 +17,7 @@
     },
     {
         "id": 2,
-        
+        "quantity":4,
         "cardid": 6983839,
         "price": 233,
       
@@ -36,7 +36,7 @@
            
             "cardid": 23771716,
             "price":321312,
-          
+            "quantity":4,
             "user":
             {
                 "id":1,
@@ -51,7 +51,7 @@
           
                 "cardid": 43230671,
                 "price": 900,
-              
+                "quantity":4,
                 "user":
                 {
                     "id":2,
@@ -64,7 +64,7 @@
                 },
                 {
                     "id": 5,
-                  
+                    "quantity":4,
                     "cardid": 6983839,
                     "price": 499
                     ,
@@ -84,7 +84,7 @@
                         
                         "cardid": 6983839,
                         "price": 999,
-                      
+                        "quantity":4,
                         "user":
                         {
                             "id":2,
