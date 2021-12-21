@@ -34,6 +34,7 @@ input:number;
    }
 
   ngOnInit(): void {
+    
     this.nadjiOglase()
   
     
@@ -63,6 +64,8 @@ displayProductPreview($event:Proizvod) {
 }
 
 
-
+gotoHome(){
+  this.router.navigate(['/cart']);  // define your component where you want to go
+}
 }
 
