@@ -1,6 +1,8 @@
 .red {
     width: 15%;
     float: left;
+    display: block;
+    height: 100%;
     
 }
 
@@ -13,11 +15,17 @@ margin-left: auto;
 margin-bottom: 10px;
 background-color: beige;
 }
-.card {
-    margin: auto;
-    max-width: 950px;
-    width: 90%;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
-    border: transparent
+
+ .btn{
+    width:40px;
+    margin:1.5em 0;
+    height: 40px
 }
+
+ .btn-info{
+    float:left;
+ }
+.btn-danger{
+    float:right;
+}
+

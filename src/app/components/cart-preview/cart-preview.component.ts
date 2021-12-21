@@ -36,5 +36,8 @@ export class CartPreviewComponent implements OnInit {
   obrisIzKorpe(item:Proizvod){
     this.store.dispatch(DeleteFromCart(item))
   }
+  dodajUKorpu(item:Proizvod){
+    this.store.dispatch(CartActions.AddToCart(item))
+  }
 
 }
