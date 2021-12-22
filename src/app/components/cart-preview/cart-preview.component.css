@@ -1,19 +1,6 @@
-.red {
-    width: 15%;
-    float: left;
-    display: block;
-    height: 100%;
-    
-}
-
-.red-container {
-display:table;
-width: 95%;
-margin-right: auto;
-
-margin-left: auto;
-margin-bottom: 10px;
-background-color: beige;
+.row {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
  .btn{

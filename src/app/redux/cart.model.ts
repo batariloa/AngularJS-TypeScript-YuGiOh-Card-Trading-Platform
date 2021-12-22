@@ -2,8 +2,8 @@
 
 export interface ICart {
     items: Proizvod[];
-    cnt: number; //Counter
-    sum: number; //Cash summary
+    
+  
 }
 export class Proizvod {
     id: number =0;
@@ -14,6 +14,7 @@ export class Proizvod {
     karta: Karta = {} as Karta;
     user:User = {} as User;
     cardid:number = 0;
+    
    
 }
 
@@ -26,8 +27,8 @@ export interface card_price{
 }
 export const initialState:ICart= {
     items:[] as Proizvod[],
-    cnt:0,
-    sum:0
+    
+
 };
 
 
@@ -40,6 +41,7 @@ export interface Karta {
     name: string;
     card_images:slike[];
     card_prices:card_price[];
+    set:string;
     
  
 

@@ -1,17 +1,43 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script src="https://kit.fontawesome.com/ca9af8d80b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
 <div class='container'>
     <div class="card justify-content-center" >
         <div class="row justify-content-center">
-ddd
+<h5 style="text-align: center;">Pregled korpe</h5>
         </div>
-<div *ngFor="let item of cartItems" class ="row justify-content-center"> sss 
-<div class="imgDiv">
+<div *ngFor="let item of cartItems" class ="row justify-content-center">
+<div class="imgDiv col-sm">
     <img [src]="item.karta.card_images[0].image_url"> 
 </div>
-
+<div class="col-sm my-auto">
+    {{item.karta.name}}
 </div>
+<div class="col-sm my-auto">
+    {{item.user.username}}
+</div>
+<div class="col-sm my-auto">
+   {{item.price}}
+</div>
+<div class="col-sm my-auto">
+    {{item.count}}
+ </div>
+<div class="col-sm my-auto">
+    <button (click)="dodajUKorpu(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
+    <button (click)="obrisIzKorpe(item)" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button>	</div>
+ 
+</div>
+<div  class ="row justify-content-center ">
 
-      
 
     </div>
-
+    <div class="order_total">
+        <div class="order_total_content text-md-right">
+            <div class="order_total_title">Ukupna Cena:</div>
+            <div class="order_total_amount">{{sum$ |async}} RSD</div>
+        </div>
+    </div>
+    <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Nastavi kupovinu</button> <button type="button" class="button cart_button_checkout">Plaćanje</button> </div>
 </div>

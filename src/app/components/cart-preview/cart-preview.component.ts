@@ -17,7 +17,7 @@ export class CartPreviewComponent implements OnInit {
 
  cart:Observable<Proizvod[]> ;
  cartItems:any[] = [];
-
+ proizvod:Proizvod = new Proizvod;
   visible: boolean = false;
   constructor(private store:Store<AppState>, private route:ActivatedRoute) {
 
@@ -26,11 +26,14 @@ export class CartPreviewComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  
     this.cart.subscribe(val =>
       {
-        this.cartItems=val
+      
+     console.log(this.cartItems)
       })
-   
+
+     
   }
 
   obrisIzKorpe(item:Proizvod){

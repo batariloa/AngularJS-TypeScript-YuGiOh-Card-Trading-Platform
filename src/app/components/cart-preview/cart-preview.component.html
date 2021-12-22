@@ -1,23 +1,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://kit.fontawesome.com/ca9af8d80b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 <div style="display: block; width: 550px; position: fixed; right:20px; top:100px; z-index: 100;
 ; background-color: black; min-height: 100px; padding-top: 20px; " class="card" 
 
 >
 <p *ngIf="cartItems.length==0 " style="color:white">Korpa je prazna.</p>
-<div class="red-container" *ngFor="let item of cart |async">
+<div class="row" style="background-color: white;" *ngFor="let item of cart |async">
 
 
-    <div class="red">
+    <div class="col-sm my-auto">
         <img style="width: 50px" [src]="item.karta.card_images[0].image_url">
     </div>
-   <div class="red" style="width: 30%;" >{{item.karta.name}} </div>
-   <div class="red">{{item.price}}</div>
-   <div class="red">{{item.count}}ss</div> 
-   <div class="red" style=" width: 100px;"> <button (click)="dodajUKorpu(item)" class="btn btn-info btn-sm"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-    <button (click)="obrisIzKorpe(item)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>	</div>
+   <div class="col-sm my-auto" style="width: 30%;" >{{item.karta.name}} </div>
+   <div class="col-sm my-auto">{{item.price}}</div>
+   <div class="col-sm my-auto">{{item.count}}ss</div> 
+   <div class="col-sm my-auto" > <button (click)="dodajUKorpu(item)" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
+    <button (click)="obrisIzKorpe(item)" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button>	</div>
 
-    <hr>
    
 
 </div>

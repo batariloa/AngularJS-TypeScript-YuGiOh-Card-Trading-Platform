@@ -22,10 +22,8 @@ export const reducer = createReducer(
       if(element.id===product.id){
         
         if(element.count<element.quantity){
-        
-        element.count++;
-      
-        
+          
+        element.count++;   
         }
         dodaj = false;
     

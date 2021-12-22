@@ -28,6 +28,7 @@ export const selectPriceKorpa = createSelector(
 export const selectCart  = createSelector(
     createFeatureSelector('cart'), 
     (state: ICart) => {
+      
         return state.items;
 
     }
