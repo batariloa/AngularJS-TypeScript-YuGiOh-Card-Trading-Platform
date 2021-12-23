@@ -19,6 +19,7 @@ import { CartPreviewComponent } from './components/cart-preview/cart-preview.com
 import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
 import { SessionServiceService } from './services/session-service.service';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UspesnoPlacanjeComponent } from './components/uspesno-placanje/uspesno-placanje.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CartPreviewComponent,
     ProductPreviewComponent,
     CheckoutComponent,
+    UspesnoPlacanjeComponent,
 
   ],
   imports: [
