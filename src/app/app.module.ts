@@ -13,11 +13,12 @@ import { RouterModule } from '@angular/router';
 import { ApiService } from './services/api.service';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CartPreviewComponent } from './components/cart-preview/cart-preview.component';
 import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
 import { SessionServiceService } from './services/session-service.service';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,13 @@ import { SessionServiceService } from './services/session-service.service';
     NavbarComponent,
     CartPreviewComponent,
     ProductPreviewComponent,
+    CheckoutComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule,
-    CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer})
+    CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer}), ReactiveFormsModule,FormsModule
   ],
   providers: [ApiService, SessionServiceService],
   bootstrap: [AppComponent]

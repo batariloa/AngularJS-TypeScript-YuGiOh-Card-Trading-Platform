@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   cart$:Observable<Proizvod[]> = new Observable;
   sum$: Observable<Number>  = new Observable
   cartItems:any = [];
-  private cartRemove: Subject<Karta> = new Subject<Karta>();
+
   constructor(private store:Store) {
 
     this.cart$ = this.store.select(selectCart);

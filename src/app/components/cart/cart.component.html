@@ -6,9 +6,31 @@
 <div class='container'>
     <div class="card justify-content-center" >
         <div class="row justify-content-center">
-<h5 style="text-align: center;">Pregled korpe</h5>
+
         </div>
-<div *ngFor="let item of cartItems" class ="row justify-content-center">
+        <div  class ="row justify-content-center">
+        <div class="imgDiv col-sm">
+           <b></b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Ime</b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Korisnik</b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Cena</b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Kolicina</b>
+         </div>
+        <div class="col-sm my-auto">
+          
+        </div>
+        </div>
+
+
+<div *ngFor="let item of cartItems" class ="row  justify-content-center">
 <div class="imgDiv col-sm">
     <img [src]="item.karta.card_images[0].image_url"> 
 </div>
@@ -19,7 +41,7 @@
     {{item.user.username}}
 </div>
 <div class="col-sm my-auto">
-   {{item.price}}
+   {{item.price}} RSD
 </div>
 <div class="col-sm my-auto">
     {{item.count}}
@@ -39,5 +61,6 @@
             <div class="order_total_amount">{{sum$ |async}} RSD</div>
         </div>
     </div>
-    <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Nastavi kupovinu</button> <button type="button" class="button cart_button_checkout">Plaćanje</button> </div>
+    <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Nastavi kupovinu</button> 
+        <button routerLink="/checkout" type="button" class="button cart_button_checkout">Plaćanje</button> </div>
 </div>
