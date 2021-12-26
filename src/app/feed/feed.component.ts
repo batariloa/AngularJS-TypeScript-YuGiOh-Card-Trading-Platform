@@ -9,7 +9,6 @@ import { KartaPreviewComponent } from '../components/karta-preview/karta-preview
 import { ApiService } from 'src/app/services/api.service';
 import { AppState } from '../models/app.state';
 import { Proizvod, User } from '../redux/cart.model';
-import { SessionServiceService } from '../services/session-service.service';
 
 
 @Component({
@@ -27,7 +26,7 @@ input:number;
 
 
   constructor(private route:ActivatedRoute, public router:Router, private api:ApiService, private store:Store<AppState>,
-    private sessionService:SessionServiceService) 
+    ) 
   {
     
   this.input=0;  

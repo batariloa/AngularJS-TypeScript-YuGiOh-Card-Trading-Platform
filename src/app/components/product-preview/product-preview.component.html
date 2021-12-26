@@ -1,0 +1,18 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<div  class="container" style="height: 400px; width:400px;  background-color: white; border-left: red 1px solid; " >
+    <a  style="position: absolute; right:10px; width: 40px; margin-right: 10px;" (click)="close()"><i class="bi bi-x" style="font-size: 2.00em;"></i></a>
+   <div >
+       <img [src]="proizvod.karta.card_images[0].image_url">
+   </div>
+   
+    <h5 class="title" style="margin:0 auto" class="card-title font-weight-bold">  {{proizvod.karta.name}}</h5>
+    <div >
+        <h5 class="card-title font-weight-bold">{{proizvod.price}} RSD</h5><br>
+        <p>Poredjenje cena:</p>
+        <br> Amazon: {{proizvod.karta.card_prices[0].amazon_price}} $
+        <br> Card Market: {{proizvod.karta.card_prices[0].cardmarket__price}} $
+        <br> TCG Player: {{proizvod.karta.card_prices[0].tcgplayer_price}} $
+    </div>
+</div>

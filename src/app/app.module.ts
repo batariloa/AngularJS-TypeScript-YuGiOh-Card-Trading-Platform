@@ -17,9 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CartPreviewComponent } from './components/cart-preview/cart-preview.component';
 import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
-import { SessionServiceService } from './services/session-service.service';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UspesnoPlacanjeComponent } from './components/uspesno-placanje/uspesno-placanje.component';
+import { AngularFireModule} from '@angular/fire/compat';
+import { LoginComponent } from './components/login/login.component'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './components/register/register.component'; 
 
 @NgModule({
   declarations: [
@@ -32,14 +35,26 @@ import { UspesnoPlacanjeComponent } from './components/uspesno-placanje/uspesno-
     ProductPreviewComponent,
     CheckoutComponent,
     UspesnoPlacanjeComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule,
-    CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer}), ReactiveFormsModule,FormsModule
+    CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer}), ReactiveFormsModule,FormsModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyACA3acQ4BuPojzimIUOCHKfDnSxQW-1r4",
+      authDomain: "yugioh-20b18.firebaseapp.com",
+      projectId: "yugioh-20b18",
+      storageBucket: "yugioh-20b18.appspot.com",
+      messagingSenderId: "280036925399",
+      appId: "1:280036925399:web:3889f03a72768af876b592",
+      measurementId: "G-TFLN3404NY"
+    }), 
+
   ],
-  providers: [ApiService, SessionServiceService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

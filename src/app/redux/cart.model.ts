@@ -56,5 +56,6 @@ export interface User {
     id:number,
     username:string,
     posts:number,
-    memberSince: string
+    memberSince: string;
+    displayName: string;
 }

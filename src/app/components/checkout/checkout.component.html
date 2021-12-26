@@ -1,0 +1,117 @@
+<div class="container">
+    
+<form  class="needs-validation" [formGroup]="transakcijaForma" (ngSubmit)="onSubmit()" >
+
+    <div class="mb-3">
+        <label for="address">Ulica i broj</label>
+        <input type="text" formControlName="ulica" 
+         class="form-control"placeholder="Vojislava Ilića 44" >
+        <div *ngIf="this.submitted && control('ulica')?.errors?.['required']" class="invalid" > Molimo Vas da unese vašu adresu. </div>
+    </div>
+    <div class="mb-3">
+        <label for="address2">Interfon, sprat <span class="text-muted">(Izborno)</span></label>
+        <input  
+         type="text" class="form-control"  placeholder="Interfon 18">
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+            <label for="country">Država</label>
+            <select class="custom-select d-block w-100" formControlName="drzava" id="country" >
+                <option value=""  >Izaberi...</option>
+                <option value="Srbija">Srbija</option>
+                <option value="Bosna i Hercegovina">Bosna i Hercegovina</option>
+                <option value="Crna Gora">Crna Gora</option>
+            </select>
+            <div class="invalid"
+            *ngIf="this.submitted && control('drzava')?.errors?.['required']" 
+            > Molimo Vas da izaberete državu. </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="state">Grad</label>
+            <input formControlName="grad"
+            class="form-control d-block w-100" id="city" placeholder="Beograd" >
+          
+            <div class="invalid"
+            *ngIf="this.submitted && control('grad')?.errors?.['required']" > Molimo Vas da unesete grad. </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input type="text" class="form-control" id="zip" placeholder="11100" formControlName="zip">
+            <div class="invalid"
+            *ngIf="this.submitted && control('zip')?.errors?.['required']"
+            > Zip kod je obavezan. </div>
+        </div>
+    </div>
+
+
+    <hr class="mb-4">
+    <h4 class="mb-3">Plaćanje</h4>
+    <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+            <input id="credit" formControlName="tipPlacanja" type="radio" class="custom-control-input" 
+            [value]="true"  
+            checked="">
+            <label class="custom-control-label" for="credit">Kreditna kartica</label>
+        </div>
+     
+        <div class="custom-control custom-radio">
+            <input 
+            value="false" formControlName="tipPlacanja"
+            id="paypal"  type="radio" class="custom-control-input" >
+            <label class="custom-control-label" for="paypal">Plaćanje pouzećem </label>
+        </div>
+        <div class="invalid"
+        *ngIf="this.submitted && control('tipPlacanja')?.value != (true||false)"
+        > Morate izabrati način plaćanja </div>
+    </div>
+    </form>
+    <form  class="needs-validation" [formGroup]="transakcijaFormaPlacanje" (ngSubmit)="onSubmit()" >
+    <div *ngIf="control('tipPlacanja')?.value==true">
+    <div class="row" >
+        <div class="col-md-6 mb-3">
+            <label for="cc-name">Ime vlasnika kartice</label>
+            <input type="text" class="form-control" id="cc-name" placeholder="" 
+            formControlName="ime"
+            >
+            <small class="text-muted">Ime i prezime prikazani na kartici</small>
+            <div class="invalid"
+            *ngIf="this.submitted && controlKartica('ime')?.errors?.['required'] && control('tipPlacanja')?.value==true"
+            > Ime sa kartice je obavezno </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label 
+            for="cc-number">Broj kreditne kartice</label>
+            <input type="text" class="form-control" formControlName="brojKartice">
+            <div 
+            *ngIf="this.submitted && controlKartica('brojKartice')?.errors?.['required'] && control('tipPlacanja')?.value==true"
+            class="invalid"> Broj kreditne kartice je obavezan </div>
+            <div 
+            *ngIf="this.submitted && controlKartica('brojKartice')?.errors?.['pattern'] && control('tipPlacanja')?.value==true"
+            class="invalid"> Unesite pravilan format broja kartice </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-5">
+            <label for="cc-expiration">Datum isteka</label>
+            <input type="text"  class="form-control" formControlName="datum">
+            <div
+            *ngIf="this.submitted && controlKartica('datum')?.errors?.['required'] && control('tipPlacanja')?.value==true"
+            class="invalid"> Molimo Vas unesite datum isteka kartice. </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="cc-cvv">CVV</label>
+            <input type="text" class="form-control" id="cc-cvv" formControlName="cvv">
+            <div 
+            *ngIf="this.submitted && controlKartica('cvv')?.errors && control('tipPlacanja')?.value==true"
+            class="invalid"> Molimo Vas da unesete ispravan CVV kod </div>
+        </div>
+        <br>
+    </div>
+</div>
+    <hr class="mb-4">
+    <button class="btn btn-primary btn-lg btn-block" (click)="onSubmit()">Pošalji porudžbinu</button>
+
+
+   
+        </form>
+</div>
