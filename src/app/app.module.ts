@@ -22,7 +22,11 @@ import { UspesnoPlacanjeComponent } from './components/uspesno-placanje/uspesno-
 import { AngularFireModule} from '@angular/fire/compat';
 import { LoginComponent } from './components/login/login.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RegisterComponent } from './components/register/register.component'; 
+import { RegisterComponent } from './components/register/register.component';
+import { AddOglasComponent } from './components/add-oglas/add-oglas.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { AngularMaterialModule} from "../angular.material"
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 @NgModule({
   declarations: [
@@ -37,12 +41,13 @@ import { RegisterComponent } from './components/register/register.component';
     UspesnoPlacanjeComponent,
     LoginComponent,
     RegisterComponent,
+    AddOglasComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule,
-    CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer}), ReactiveFormsModule,FormsModule,
+    CommonModule, HttpClientModule, RouterModule, StoreModule.forRoot({cart: reducer}), ReactiveFormsModule,FormsModule,  AngularMaterialModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyACA3acQ4BuPojzimIUOCHKfDnSxQW-1r4",
       authDomain: "yugioh-20b18.firebaseapp.com",
@@ -51,7 +56,8 @@ import { RegisterComponent } from './components/register/register.component';
       messagingSenderId: "280036925399",
       appId: "1:280036925399:web:3889f03a72768af876b592",
       measurementId: "G-TFLN3404NY"
-    }), 
+    }),
+    BrowserAnimationsModule, 
 
   ],
   providers: [ApiService],

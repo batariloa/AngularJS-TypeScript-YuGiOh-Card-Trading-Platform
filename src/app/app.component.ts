@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
   title = 'YuGiOhStore';
   isLoggedIn = false;
-
+  displayName:string = "";
   proizvod:Proizvod= {} as Proizvod;
 
   constructor(public loginService:FirebaseService)
@@ -31,6 +31,10 @@ if(localStorage.getItem('user')!=null){
 }else{
   this.isLoggedIn=false;
 }
+
+
+
+
   }
 
   loginStatus(success:boolean){

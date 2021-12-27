@@ -2,15 +2,34 @@
 class="row"
   name="containter"
   style="
-    width: 80%;
+    width: 900px;
     margin: 0 auto;
     font-family: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua,
       Georgia, serif;
   "
->
+><div style="width: 100%;">
+
+<form id="forma" style="margin: 0 auto; display: block; ">
+
+  <div class="field">
+
+  <input style="margin-left: 10px ; height: 40px; width: 400px; font-size: large; text-align: center;" name="title" placeholder="Ime karte za pretragu..."> 
+
+
+  <button  class = " btn btn-primary"  (click)="showForm()">Dodaj oglas</button>
+</div>
+  
+</form> 
+
+<div class="row" *ngIf="prikaziFormu==true" style="margin-top: 20px;">
+
+<app-add-oglas></app-add-oglas>
+
+</div>
+</div>
   <div 
-    style="width: 700px; margin: 0 auto;  float: left"
-    class="my-grid-container col-md-8"
+
+    class="my-grid-container col-md-6"
   >
     <div
       *ngFor="let item of oglasiData"
@@ -31,7 +50,7 @@ class="row"
     </div>
   </div>
   <div
-  class="col-md-4"
+  class="col-md-2"
     *ngIf="prikaziDetalje"
     style="width: 300px; height: 100%; right: 5px; float: left"
   >

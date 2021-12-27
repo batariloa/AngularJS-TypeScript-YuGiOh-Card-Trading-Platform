@@ -14,7 +14,8 @@ export class Proizvod {
     karta: Karta = {} as Karta;
     user:User = {} as User;
     cardid:number = 0;
-    
+    set: string = "";
+    stanje: string = "";
    
 }
 
@@ -41,7 +42,7 @@ export interface Karta {
     name: string;
     card_images:slike[];
     card_prices:card_price[];
-    set:string;
+    card_sets:card_sets[];
     
  
 
@@ -58,4 +59,8 @@ export interface User {
     posts:number,
     memberSince: string;
     displayName: string;
+}
+
+export interface card_sets{
+    set_name:string;
 }

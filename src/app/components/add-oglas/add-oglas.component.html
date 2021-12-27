@@ -1,0 +1,128 @@
+<div style="margin-bottom: 20px; margin-top: 15px;" class="row" >
+  <div class="col">
+    <img [src]="kartaImgUrl" style="position:relative; left:10px; top:20px; height: 200px">
+  </div>
+    <form name="forma"  [formGroup]="forma" style="margin:0 auto" >
+    
+      <div class="row">
+       
+         <div class="col">
+            <label for="formGroupExampleInput">Ime karte</label>
+            <input type="text"  class="form-control"
+            placeholder="Unesi ime karte.."
+            [formControl]="control" 
+            [matAutocomplete]="auto"
+           >
+     <mat-autocomplete #auto="matAutocomplete" [displayWith]="getOptionName" (optionSelected)="promeniKartu($event.option.value)">
+       <mat-option *ngFor="let karta of karte$ |async " [value]="karta"  >
+         {{karta.name}}
+       </mat-option>
+     </mat-autocomplete>
+            <div *ngIf="" class="invalid-feedback"
+            style="padding-right: 0% !important; margin-right: 20px;">
+              <div *ngIf="">Ime je obavezno</div>
+              <div *ngIf="">
+                Ime mora imati najmanje 4 karaktera
+              </div>
+              <div *ngIf="">
+                Ime ne sme imati vise od 20 karaktera
+              </div>
+            </div>
+        
+          </div>
+    
+        </div>
+      <div class="row">
+    
+          <div class="col">
+            <label for="formGroupExampleInput">Set</label>
+            <select
+            formControlName="brojSobe"  
+            name="broj"  class="form-control" id="formGroupExampleInput" [value]="oglasDodaj.set" >
+            
+          <option [value]="item.set_name" *ngFor="let item of setovi">{{item.set_name}}</option>
+            
+          </select>
+    
+            <div *ngIf="" class="invalid-feedback">
+              <div *ngIf="">Broj sobe je obavezan</div>
+              <div *ngIf="">
+                Broj sobe ne može biti manji od 1
+              </div>
+              <div *ngIf="">
+                Broj sobe ne može biti veći od 9999
+              </div>
+            </div>
+          </div>
+    
+    
+          <div class="col">
+            <label for="formGroupExampleInput2">Stanje karte</label>
+            <select [(ngModel)]="oglasDodaj.stanje"
+            formControlName="brojSobe"  
+            name="broj"  class="form-control" id="formGroupExampleInput" >
+            
+          <option value="Kao nova" selected>Kao nova</option>
+          <option value="Blago korišćena" >Blago korišćena</option>
+          <option value="Blago oštećena">Blago oštećena</option>
+          <option value="Vrlo oštećena">Vrlo oštećena</option>
+          </select>
+            <div  class="invalid-feedback">
+              <div >Ulica je obavezna</div>
+              <div >
+                Ulica mora imati najmanje 6 karaktera
+              </div>
+              <div>
+                Ulica ne sme imati vise od 30 karaktera
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    <div class="row">
+          <div class="col">
+            <label for="formGroupExampleInput">Cena</label>
+            <input [(ngModel)]="oglasDodaj.price"
+         
+            formControlName="city" 
+            name="broj" type="number" class="form-control" id="formGroupExampleInput" placeholder="Beograd">
+            <div *ngIf="" class="invalid-feedback">
+              <div *ngIf="">Grad je obavezan</div>
+              <div *ngIf="">
+                Grad mora imati najmanje 3 karaktera
+              </div>
+            
+            </div>
+          </div>
+    
+    
+          <div class="col">
+            <label for="formGroupExampleInput2">Količina</label>
+            <input  
+            [(ngModel)]="oglasDodaj.quantity"
+            formControlName="cenaPoNoci" 
+            type="number"  name="street"  class="form-control" id="formGroupExampleInput2" placeholder="4000">
+            <div *ngIf="" class="invalid-feedback">
+              <div *ngIf="">Cena je obavezna</div>
+              <div *ngIf="">
+                Cena ne moze biti negativan broj.
+              </div>
+            
+            </div>
+        
+            </div>
+          </div>
+      
+        </form>
+       
+      </div>
+     
+      <div style=" margin-top: 23px;  display: block; margin-bottom: 10px; width: 100%;">
+    
+        <button (click)="dodajOglas()" type="submit" class="btn btn-primary mb-10" style="
+        display: block;margin-top: 40px; margin: 0 auto;"  >Objavi oglas</button>
+
+
+
+      </div>
+    

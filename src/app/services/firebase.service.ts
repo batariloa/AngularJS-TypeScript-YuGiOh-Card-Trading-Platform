@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DocumentSnapshot, Firestore } from 'firebase/firestore';
 import { map, tap } from 'rxjs';
+import { Proizvod } from '../redux/cart.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +28,8 @@ let userid;
         userid=res.user?.uid;
 
         this.isLoggedIn = true;
-        localStorage.setItem('user', JSON.stringify(res.user))
+        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('id', JSON.stringify(res.user?.uid));
      console.log("ovo je id " + res.user?.uid)
        await   this.firestore.collection('users').doc(res.user?.uid).valueChanges().subscribe(
          data =>{
@@ -60,7 +62,26 @@ let userid;
       }
     )
 
+
+    
+
    }
+
+   async addOglas(proizvod:Proizvod){
+    let user;
+    await this.firestore.collection('oglasi').add({
+      karta: proizvod.cardid,
+      user:JSON.stringify(localStorage.getItem('id')),
+      stanje:proizvod.stanje,
+      price: proizvod.price,
+      quantity: proizvod.quantity
+    })
+
+
+    
+
+   }
+
 
    logout(){
      this.firebaseAuth.signOut();

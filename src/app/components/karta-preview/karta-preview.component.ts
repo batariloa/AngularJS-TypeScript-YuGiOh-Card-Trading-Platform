@@ -49,7 +49,7 @@ export class KartaPreviewComponent implements OnInit {
       this.cardData = res.data[0];
       this.oglas.karta = res.data[0]
       this.oglas.count = 1;
-      this.oglas.karta.set= "Test set 123"
+      
           console.log("yipe");
           console.log(res.data[0])
      

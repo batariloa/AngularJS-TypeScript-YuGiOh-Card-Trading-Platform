@@ -21,6 +21,7 @@ export class FeedComponent implements OnInit {
   public userData:User[] = [];
   public catchProizvod:Proizvod={} as Proizvod;
   prikaziDetalje = false;
+  prikaziFormu = false;
 input:number;
 
 
@@ -65,6 +66,15 @@ displayProductPreview($event:Proizvod) {
 
 gotoHome(){
   this.router.navigate(['/cart']);  // define your component where you want to go
+}
+
+showForm(){
+  if(this.prikaziFormu==false){
+    this.prikaziFormu=true
+  }
+  else{
+    this.prikaziFormu=false;
+  }
 }
 }
 

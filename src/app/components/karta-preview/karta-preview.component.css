@@ -5,7 +5,8 @@ float:left;
 display:block;
 }
 body {
-    background: #E0E0E0
+    background: #E0E0E0;
+    font-size: 20px;
 }
 
 .details {
@@ -37,7 +38,8 @@ body {
 }
 
 .btn {
-    border-radius: 0
+    border-radius: 0;
+    font-size: 12px;
 }
 
 .img-thumbnail {
@@ -47,5 +49,14 @@ body {
 .card {
     box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
     border-radius: 5px;
+    font-size: 14px;
     padding-bottom: 10px
+}
+
+a {
+    font-size: 16px;
+    font-weight: 600;
+}
+.card-title{
+    font-size: 16px;
 }
