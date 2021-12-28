@@ -23,6 +23,9 @@ export class AppComponent implements OnInit{
 
   constructor(public loginService:FirebaseService, private router: Router)
   {
+    if(this.isLoggedIn==false){
+      this.router.navigate(['/login'])
+    }
     
 
   }
@@ -44,12 +47,10 @@ if(success){
  
   this.isLoggedIn= true;
 }
+else{
+  this.isLoggedIn=false;
+}
   }
 
-  registerRedirect($event:any){
-    if($event===true)
-    this.router.navigateByUrl("/register")
-    
-  }
 
 }

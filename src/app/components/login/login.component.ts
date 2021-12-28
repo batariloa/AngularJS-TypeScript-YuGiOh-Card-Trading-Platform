@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   @Output() register: EventEmitter<any> = new EventEmitter();
   username:string="";
   password:string=""; 
-  constructor(private loginService: FirebaseService) { }
+  constructor(private loginService: FirebaseService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -22,11 +23,12 @@ export class LoginComponent implements OnInit {
  await this.loginService.singin(this.username, this.password)
  if(this.loginService.isLoggedIn){
    this.loggedIn.emit(true);
+   this.router.navigate(['/feed'])
  }
   }
 
   registerRedirect(){
-    this.register.emit(true);
+    this.router.navigate(['/register'])
 
   }
 }

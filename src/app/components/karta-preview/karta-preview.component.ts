@@ -49,7 +49,7 @@ export class KartaPreviewComponent implements OnInit {
     
     dodajUKorpu(){
 
-      
+      console.log(this.oglas.count + " dd")
       this.store.dispatch(CartActions.AddToCart(this.oglas))
 
       

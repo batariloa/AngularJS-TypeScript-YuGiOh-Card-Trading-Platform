@@ -74,12 +74,12 @@ async nadjiKartu(oglas:any){
   console.log(oglas.cardid + " blbl");
  (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
    
-  oglas.karta = res.data[0]
-oglas.count = 1;
+
 
      this.oglasiData$.subscribe(val =>{
 
-      
+      oglas.karta = res.data[0]
+      oglas.count = 1;
       val.push(oglas)
           
       console.log("Posle dodavanja" + val[0].cardid);

@@ -1,5 +1,5 @@
 
-<div style="width:220px; height: 370px; float:right; margin: 0 auto" *ngIf="oglas">
+<div style="width:220px; height: 400px; float:right; margin: 0 auto" *ngIf="oglas">
     <div style="display: block ; width: 260px; height: 40px;">
    
   
@@ -14,9 +14,11 @@
     </div>
     <div style="margin-top: 20px; margin-left: auto; margin-right: auto; text-align: center;">
       <div class='cvp'>
-        <h5 class="card-title font-weight-bold">  {{oglas.karta.name}}</h5>
+      <div class="name-div" style="height:50px">
+        <h5 class="card-title font-weight-bold" >  {{oglas.karta.name}}</h5>
+      </div>
         <p class="card-text">{{oglas.price}} RSD</p> <a  (click)="prikaziVise()" class="btn details px-auto">pogledaj više</a><br /> 
-        <a href="#" (click)="dodajUKorpu()" class="btn cart px-auto">ADD TO CART</a>
+        <a (click)="dodajUKorpu()" class="btn cart px-auto">ADD TO CART</a>
     </div>
     </div>
     </div>

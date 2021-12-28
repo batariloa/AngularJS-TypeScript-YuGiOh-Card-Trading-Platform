@@ -15,11 +15,11 @@ export const reducer = createReducer(
     const entriesClone: ICart = JSON.parse(JSON.stringify(entries));
     const productCopy: Proizvod = JSON.parse(JSON.stringify(product));
 
-      console.log("brojim " + productCopy.count)
+   
     let dodaj = true;
     entriesClone.items.forEach(element => {
       
-      if(element.id===product.id){
+      if(element.cardid===product.cardid){
         
         if(element.count<element.quantity){
           
