@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from './models/app.state';
 import { FirebaseService } from './services/firebase.service';
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit{
   displayName:string = "";
   proizvod:Proizvod= {} as Proizvod;
 
-  constructor(public loginService:FirebaseService)
+  constructor(public loginService:FirebaseService, private router: Router)
   {
     
 
@@ -43,6 +44,12 @@ if(success){
  
   this.isLoggedIn= true;
 }
+  }
+
+  registerRedirect($event:any){
+    if($event===true)
+    this.router.navigateByUrl("/register")
+    
   }
 
 }

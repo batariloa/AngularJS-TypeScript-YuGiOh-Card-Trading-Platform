@@ -10,6 +10,7 @@ import { EventEmitter } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
+  @Output() register: EventEmitter<any> = new EventEmitter();
   username:string="";
   password:string=""; 
   constructor(private loginService: FirebaseService) { }
@@ -22,5 +23,10 @@ export class LoginComponent implements OnInit {
  if(this.loginService.isLoggedIn){
    this.loggedIn.emit(true);
  }
+  }
+
+  registerRedirect(){
+    this.register.emit(true);
+
   }
 }

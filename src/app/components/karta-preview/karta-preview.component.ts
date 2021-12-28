@@ -39,22 +39,13 @@ export class KartaPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.nadjiKartu();
+    console.log("unutar " + this.oglas.karta.name)
+      
   
   }
 
 
-  nadjiKartu(){
-    (this.api.getCards(this.oglas.cardid))!.subscribe((res:any)=>{
-      this.cardData = res.data[0];
-      this.oglas.karta = res.data[0]
-      this.oglas.count = 1;
-      
-          console.log("yipe");
-          console.log(res.data[0])
-     
-        });
-    }
+
     
     dodajUKorpu(){
 

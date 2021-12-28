@@ -1,5 +1,5 @@
 
-<div style="width:220px; height: 370px; float:right; margin: 0 auto" *ngIf="cardData">
+<div style="width:220px; height: 370px; float:right; margin: 0 auto" *ngIf="oglas">
     <div style="display: block ; width: 260px; height: 40px;">
    
   
@@ -10,11 +10,11 @@
       <img style="width: 100px; height: 155px;
        margin-left: auto;
   margin-right: auto;
-  display: block;" [src]="cardData.card_images[0].image_url">
+  display: block;" [src]="oglas.karta.card_images[0].image_url">
     </div>
     <div style="margin-top: 20px; margin-left: auto; margin-right: auto; text-align: center;">
       <div class='cvp'>
-        <h5 class="card-title font-weight-bold">  {{cardData.name}}</h5>
+        <h5 class="card-title font-weight-bold">  {{oglas.karta.name}}</h5>
         <p class="card-text">{{oglas.price}} RSD</p> <a  (click)="prikaziVise()" class="btn details px-auto">pogledaj više</a><br /> 
         <a href="#" (click)="dodajUKorpu()" class="btn cart px-auto">ADD TO CART</a>
     </div>

@@ -76,7 +76,7 @@ let userid;
       stanje:proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
-      card_name: proizvod.karta.name
+   
     })
 
 

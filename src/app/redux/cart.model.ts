@@ -16,7 +16,7 @@ export class Proizvod {
     cardid:number = 0;
     set: string = "";
     stanje: string = "";
-   
+
 }
 
 export interface card_price{
