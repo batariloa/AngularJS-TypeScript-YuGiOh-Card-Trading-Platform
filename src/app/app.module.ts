@@ -27,6 +27,7 @@ import { AddOglasComponent } from './components/add-oglas/add-oglas.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { AngularMaterialModule} from "../angular.material"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { SearchFilterPipe } from './filters/cardNameFilter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UspesnoPlacanjeComponent,
     LoginComponent,
     RegisterComponent,
-    AddOglasComponent,
+    AddOglasComponent,  SearchFilterPipe
 
   ],
   imports: [
@@ -57,10 +58,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       appId: "1:280036925399:web:3889f03a72768af876b592",
       measurementId: "G-TFLN3404NY"
     }),
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule
 
   ],
-  providers: [ApiService],
+  providers: [ApiService, SearchFilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

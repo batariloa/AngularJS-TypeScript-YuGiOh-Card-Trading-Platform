@@ -13,7 +13,7 @@ class="row"
 
   <div class="field">
 
-  <input style="margin-left: 10px ; height: 40px; width: 400px; font-size: large; text-align: center;" name="title" placeholder="Ime karte za pretragu..."> 
+  <input style="margin-left: 10px ; height: 40px; width: 400px; font-size: large; text-align: center;" name="title" placeholder="Ime karte za pretragu..." [(ngModel)]="input"> 
 
 
   <button  class = " btn btn-primary"  (click)="showForm()">Dodaj oglas</button>
@@ -32,7 +32,7 @@ class="row"
     class="my-grid-container col-md-6"
   >
     <div
-      *ngFor="let item of oglasiData"
+      *ngFor="let item of oglasiData  | searchFilter: input "
       style="
         width: 220px;
         border-radius: 10px;
@@ -41,7 +41,7 @@ class="row"
         background: #ff2626;
         margin: 0 auto;
       "
-      
+   
     >
       <app-karta-preview
         [oglas]="item"

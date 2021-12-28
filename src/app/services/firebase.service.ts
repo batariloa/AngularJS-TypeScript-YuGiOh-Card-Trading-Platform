@@ -3,18 +3,19 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DocumentSnapshot, Firestore } from 'firebase/firestore';
-import { map, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { Proizvod } from '../redux/cart.model';
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 isLoggedIn = false;
+oglasi:Observable<any[]> = new Observable;
 
-  constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore) {
+  constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase) {
    
 
    }
@@ -45,7 +46,7 @@ let userid;
 
    }
 
-   async singup(email:string, password:string, username:string){
+   async signup(email:string, password:string, username:string){
     let user;
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password).then(
 
@@ -68,19 +69,35 @@ let userid;
    }
 
    async addOglas(proizvod:Proizvod){
-    let user;
+    
     await this.firestore.collection('oglasi').add({
-      karta: proizvod.cardid,
+      cardid: proizvod.cardid,
       user:JSON.stringify(localStorage.getItem('id')),
       stanje:proizvod.stanje,
       price: proizvod.price,
-      quantity: proizvod.quantity
+      quantity: proizvod.quantity,
+      card_name: proizvod.karta.name
     })
 
 
     
 
    }
+
+   async getAllOglasi(){
+   
+   this.oglasi = this.firestore.collection('oglasi').valueChanges();
+   return this.oglasi;
+
+ 
+  }
+  
+
+    
+   
+
+   
+
 
 
    logout(){

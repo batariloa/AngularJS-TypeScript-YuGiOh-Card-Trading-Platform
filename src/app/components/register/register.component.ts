@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async register(){
-this.loginService.singup(this.email, this.username, this.password);
+this.loginService.signup(this.email, this.username, this.password);
 
   }
 }
