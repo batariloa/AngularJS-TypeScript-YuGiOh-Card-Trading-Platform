@@ -10,10 +10,13 @@ import { ProductPreviewComponent } from './components/product-preview/product-pr
 import { RegisterComponent } from './components/register/register.component';
 import { UspesnoPlacanjeComponent } from './components/uspesno-placanje/uspesno-placanje.component';
 import { FeedComponent } from './feed/feed.component';
+import { LoginGuardService } from './services/login-guard.service';
 
 const routes: Routes = [
-  { path: 'feed', component: FeedComponent },
-  { path: 'myproducts', component: MyProductsComponent },
+  { path: 'feed', component: FeedComponent, canActivate: [LoginGuardService] },
+  { path: '', component: FeedComponent , canActivate: [LoginGuardService]},
+
+  { path: 'myproducts', component: MyProductsComponent, canActivate: [LoginGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'success', component: UspesnoPlacanjeComponent },

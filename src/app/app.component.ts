@@ -18,28 +18,21 @@ import { SessionServiceService } from './services/session-service.service';
 export class AppComponent implements OnInit{
 
   title = 'YuGiOhStore';
-  isLoggedIn$ = new Observable;
+  isLoggedIn = true;
   displayName:string = "";
   proizvod:Proizvod= {} as Proizvod;
 
   constructor(public loginService:FirebaseService, private router: Router, public sessionService: SessionServiceService)
   {
 
-    
-    
+  
   
     
 
   }
   ngOnInit(){
 
-if(this.sessionService.isLoggedIn==false){
-  this.router.navigate(['/login'])
-  this.sessionService.isLoggedIn = true;
-}else{
-  this.router.navigate(['/feed'])
-  this.sessionService.isLoggedIn=false;
-}
+this.isLoggedIn = true;
 
 
 

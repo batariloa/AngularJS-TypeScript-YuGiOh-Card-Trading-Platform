@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from './filters/cardNameFilter.pipe';
 import { MyProductsComponent } from './components/my-products/my-products.component';
 import { SessionServiceService } from './services/session-service.service';
+import { LoginGuardService } from './services/login-guard.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { SessionServiceService } from './services/session-service.service';
     BrowserAnimationsModule
 
   ],
-  providers: [ApiService, SearchFilterPipe],
+  providers: [ApiService, SearchFilterPipe, LoginGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

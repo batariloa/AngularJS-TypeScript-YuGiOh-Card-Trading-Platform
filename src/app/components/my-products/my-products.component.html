@@ -3,6 +3,12 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<app-navbar></app-navbar>
 <div class='container'>
     <div class="card justify-content-center" >
         <div *ngIf="mojiOglasi.length==0" style="margin-top: 60px;" class="row justify-content-center"> 
@@ -17,17 +23,22 @@
             <b>Ime</b>
         </div>
         <div class="col-sm my-auto">
-            <b>Korisnik</b>
+            <b>Set</b>
         </div>
+      
         <div class="col-sm my-auto">
             <b>Cena</b>
         </div>
         <div class="col-sm my-auto">
             <b>Kolicina</b>
          </div>
+         <div class="col-sm my-auto">
+            <b>Prodato</b>
+        </div>
         <div class="col-sm my-auto">
           
         </div>
+       
         </div>
 
 
@@ -39,13 +50,17 @@
     {{item.karta.name}}
 </div>
 <div class="col-sm my-auto">
-    {{item.user.username}}
+    {{item.karta.name}}
 </div>
 <div class="col-sm my-auto">
-   {{item.price}} RSD
+   
+    {{item.price}} RSD
 </div>
 <div class="col-sm my-auto">
-    {{item.count}}
+    {{item.quantity}}
+</div>
+<div class="col-sm my-auto">
+   
  </div>
 <div class="col-sm my-auto">
 
@@ -56,12 +71,7 @@
 
 
     </div>
-    <div class="order_total">
-        <div class="order_total_content text-md-right">
-            <div class="order_total_title">Ukupna Cena:</div>
-            <div class="order_total_amount">RSD</div>
-        </div>
-    </div>
+  
     <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Nastavi kupovinu</button> 
         <button routerLink="/checkout" type="button" class="button cart_button_checkout">Plaćanje</button> </div>
 </div>

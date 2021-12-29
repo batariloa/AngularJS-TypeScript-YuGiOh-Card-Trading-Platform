@@ -7,7 +7,8 @@ img {
 }
 
 .container {
-    width:760px
+    width:760px; 
+    margin-top: 100px;
 }
 .row{
     margin-bottom: 7px;
@@ -16,6 +17,9 @@ img {
     vertical-align: middle;
    
     
+}
+div {
+    font-size: 15px;
 }
 
 .order_total {

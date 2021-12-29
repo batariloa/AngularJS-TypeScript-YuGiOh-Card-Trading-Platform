@@ -21,6 +21,7 @@ import { SessionServiceService } from '../services/session-service.service';
 })
 export class FeedComponent implements OnInit {
   public oglasiData:Proizvod[]= [];
+  public tempData:Proizvod[]= [];
   public oglasiData$:Observable<Proizvod[]> = new Observable;
   public userData:User[] = [];
   public catchProizvod:Proizvod={} as Proizvod;
@@ -33,10 +34,7 @@ input:string = "";
 
   constructor(private route:ActivatedRoute, public router:Router, private api:ApiService, private store:Store<AppState>, private firebaseService:FirebaseService, private session:SessionServiceService) 
   {
-    if(sessionStorage.getItem('user') == null){
-      
-    }
-
+    
     
 
    }
@@ -44,7 +42,7 @@ input:string = "";
   ngOnInit(): void {
 
     this.oglasiData$ = of(this.oglasiData);
-   
+   console.log("feed element")
 
   this.nadjiOglase()
     
@@ -58,12 +56,14 @@ input:string = "";
 
    async nadjiOglase(){
    (await this.firebaseService.getAllOglasi()).subscribe((val:any) => {
+     this.tempData = [];
     
     val.forEach((element:any) => {
       console.log(element)
       this.nadjiKartu(element)
    
     });
+    this.oglasiData = this.tempData
   
 
  
@@ -75,24 +75,21 @@ input:string = "";
 }
 
 async nadjiKartu(oglas:any){
-  console.log(oglas.cardid + " blbl");
+
+  console.log("koja karta" + oglas.cardid);
  (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
    
 
 
-     this.oglasiData$.subscribe(val =>{
+   
 
       oglas.karta = res.data[0]
       oglas.count = 1;
-      val.push(oglas)
+      this.tempData.push(oglas)
+      
           
-      console.log("Posle dodavanja" + val[0].cardid);
-     })
+ 
 
-        console.log("posle dodavanaja 2 "  + this.oglasiData.length)
-        console.log(oglas)
-     
-   
       });
   
   }

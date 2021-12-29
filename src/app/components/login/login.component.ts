@@ -18,15 +18,20 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: FirebaseService, private router:Router, private session: SessionServiceService) { }
 
   ngOnInit(): void {
+    console.log("nemoj zekis  "+ sessionStorage.getItem('login') )
   }
 
   async login(){
- await this.loginService.singin(this.username, this.password)
- if(this.loginService.isLoggedIn){
-  this.session.isLoggedIn = true;
-  console.log("ovo je login btn " + this.loginService.isLoggedIn)
-   this.router.navigate(['/feed'])
- }
+ this.loginService.singin(this.username, this.password).then(
+   () =>{
+    console.log("trenutno je " + sessionStorage.getItem('login'))
+    if(sessionStorage.getItem('login') == "true"){
+   
+      this.router.navigate(['/feed'])
+    }
+   }
+ );
+
   }
 
   registerRedirect(){

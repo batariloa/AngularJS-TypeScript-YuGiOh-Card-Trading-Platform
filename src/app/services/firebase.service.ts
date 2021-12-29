@@ -31,11 +31,9 @@ let userid;
         
         userid=res.user?.uid;
 
-        this.isLoggedIn = true;
-        localStorage.setItem('user', JSON.stringify(res.user));
-        localStorage.setItem('id', JSON.stringify(res.user?.uid));
       
-     console.log("ovo je id " + res.user?.uid)
+      sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
+      sessionStorage.setItem('login', "true");
      sessionStorage.setItem('user', res.user?.uid! );
      this.user = res.user?.uid!;
        await   this.firestore.collection('users').doc(res.user?.uid).valueChanges().subscribe(
@@ -49,6 +47,7 @@ let userid;
         
 
       }
+
     )
 
    }
@@ -59,7 +58,7 @@ let userid;
 
      res=>{
     
-      localStorage.setItem('id', JSON.stringify(res.user?.uid));
+      sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
 
       return this.firestore.collection('users').doc(res.user?.uid).set({
          displayName: username
@@ -117,6 +116,6 @@ let userid;
 
    logout(){
      this.firebaseAuth.signOut();
-     localStorage.removeItem('user');
+     sessionStorage.setItem('login', "false");
    }
 }
