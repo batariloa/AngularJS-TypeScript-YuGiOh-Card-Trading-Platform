@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './models/app.state';
 import { FirebaseService } from './services/firebase.service';
 import { Router } from '@angular/router';
+import { SessionServiceService } from './services/session-service.service';
 
 
 
@@ -17,23 +18,27 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
 
   title = 'YuGiOhStore';
-  isLoggedIn = false;
+  isLoggedIn$ = new Observable;
   displayName:string = "";
   proizvod:Proizvod= {} as Proizvod;
 
-  constructor(public loginService:FirebaseService, private router: Router)
+  constructor(public loginService:FirebaseService, private router: Router, public sessionService: SessionServiceService)
   {
-    if(this.isLoggedIn==false){
-      this.router.navigate(['/login'])
-    }
+
+    
+    
+  
     
 
   }
   ngOnInit(){
-if(localStorage.getItem('user')!=null){
-  this.isLoggedIn = true;
+
+if(this.sessionService.isLoggedIn==false){
+  this.router.navigate(['/login'])
+  this.sessionService.isLoggedIn = true;
 }else{
-  this.isLoggedIn=false;
+  this.router.navigate(['/feed'])
+  this.sessionService.isLoggedIn=false;
 }
 
 
@@ -41,16 +46,7 @@ if(localStorage.getItem('user')!=null){
 
   }
 
-  loginStatus(success:boolean){
-    console.log(success);
-if(success){
- 
-  this.isLoggedIn= true;
-}
-else{
-  this.isLoggedIn=false;
-}
-  }
+
 
 
 }

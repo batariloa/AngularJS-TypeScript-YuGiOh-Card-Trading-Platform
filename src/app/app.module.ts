@@ -28,6 +28,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { AngularMaterialModule} from "../angular.material"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { SearchFilterPipe } from './filters/cardNameFilter.pipe';
+import { MyProductsComponent } from './components/my-products/my-products.component';
+import { SessionServiceService } from './services/session-service.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { SearchFilterPipe } from './filters/cardNameFilter.pipe';
     UspesnoPlacanjeComponent,
     LoginComponent,
     RegisterComponent,
-    AddOglasComponent,  SearchFilterPipe
+    AddOglasComponent,  SearchFilterPipe, MyProductsComponent
 
   ],
   imports: [

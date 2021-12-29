@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { SessionServiceService } from 'src/app/services/session-service.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -24,7 +25,7 @@ username: string = ""
 
 
 
-  constructor( private store:Store<AppState>, private serviceLogin: FirebaseService, private serviceAcc: AngularFirestore) { 
+  constructor( private store:Store<AppState>, private serviceLogin: FirebaseService, private serviceAcc: AngularFirestore, private session:SessionServiceService) { 
     this.countProizvod$ = store.select(selectCountProducts);
     this.sumProizvod$ = store.select(selectPriceKorpa);
     console.log(this.countProizvod$)
@@ -35,8 +36,9 @@ username: string = ""
   ngOnInit(): void {
   
  var  localID  = JSON.parse(localStorage.getItem('userdata') ||"");
- console.log(localID['displayName']  + "eto koja prica")
+ console.log(localID['displayName']  + " =displayName")
  this.username = localID['displayName'];
+
   
   }
   prikaziKorpu(){

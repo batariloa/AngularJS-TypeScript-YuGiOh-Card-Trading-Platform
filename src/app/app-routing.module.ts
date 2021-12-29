@@ -5,13 +5,15 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { KartaPreviewComponent } from './components/karta-preview/karta-preview.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyProductsComponent } from './components/my-products/my-products.component';
 import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UspesnoPlacanjeComponent } from './components/uspesno-placanje/uspesno-placanje.component';
 import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
-  { path: '', component: FeedComponent },
+  { path: 'feed', component: FeedComponent },
+  { path: 'myproducts', component: MyProductsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'success', component: UspesnoPlacanjeComponent },

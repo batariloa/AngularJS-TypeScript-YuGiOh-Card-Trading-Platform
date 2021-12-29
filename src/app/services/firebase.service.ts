@@ -8,15 +8,18 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DocumentSnapshot, Firestore } from 'firebase/firestore';
 import { map, Observable, tap } from 'rxjs';
 import { Proizvod } from '../redux/cart.model';
+import { SessionServiceService } from './session-service.service';
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 isLoggedIn = false;
 oglasi:Observable<any[]> = new Observable;
+user: string ="";
 
-  constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase) {
+  constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase, private session:SessionServiceService) {
    
+
 
    }
 
@@ -31,9 +34,13 @@ let userid;
         this.isLoggedIn = true;
         localStorage.setItem('user', JSON.stringify(res.user));
         localStorage.setItem('id', JSON.stringify(res.user?.uid));
+      
      console.log("ovo je id " + res.user?.uid)
+     sessionStorage.setItem('user', res.user?.uid! );
+     this.user = res.user?.uid!;
        await   this.firestore.collection('users').doc(res.user?.uid).valueChanges().subscribe(
          data =>{
+         
           console.log(data)
           localStorage.setItem('userdata',JSON.stringify(data));
          }
@@ -51,7 +58,9 @@ let userid;
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password).then(
 
      res=>{
+    
       localStorage.setItem('id', JSON.stringify(res.user?.uid));
+
       return this.firestore.collection('users').doc(res.user?.uid).set({
          displayName: username
        })
@@ -72,7 +81,7 @@ let userid;
     
     await this.firestore.collection('oglasi').add({
       cardid: proizvod.cardid,
-      user:JSON.stringify(localStorage.getItem('id')),
+      user:this.user,
       stanje:proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
@@ -91,7 +100,13 @@ let userid;
 
  
   }
+  async getMyOglasi(){
+   
+    this.oglasi = this.firestore.collection('oglasi').valueChanges();
+    return this.oglasi;
+ 
   
+   } 
 
     
    

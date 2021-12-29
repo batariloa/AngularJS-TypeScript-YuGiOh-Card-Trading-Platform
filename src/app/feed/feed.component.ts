@@ -11,6 +11,7 @@ import { AppState } from '../models/app.state';
 import { Proizvod, User } from '../redux/cart.model';
 import { FirebaseService } from '../services/firebase.service';
 import { timingSafeEqual } from 'crypto';
+import { SessionServiceService } from '../services/session-service.service';
 
 
 @Component({
@@ -30,8 +31,11 @@ input:string = "";
 
 
 
-  constructor(private route:ActivatedRoute, public router:Router, private api:ApiService, private store:Store<AppState>, private firebaseService:FirebaseService) 
+  constructor(private route:ActivatedRoute, public router:Router, private api:ApiService, private store:Store<AppState>, private firebaseService:FirebaseService, private session:SessionServiceService) 
   {
+    if(sessionStorage.getItem('user') == null){
+      
+    }
 
     
 
