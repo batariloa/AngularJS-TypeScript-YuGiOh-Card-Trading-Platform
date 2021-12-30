@@ -93,7 +93,6 @@ dodajOglas(){
   this.oglasDodaj.stanje = this.oglasDodaj.stanje;
   
 
-  console.log("sdsadas" + this.oglasDodaj.cardid)
   this.fireService.addOglas(this.oglasDodaj);
      
 }

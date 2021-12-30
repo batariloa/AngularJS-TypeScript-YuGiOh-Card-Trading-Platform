@@ -59,7 +59,7 @@ input:string = "";
      this.tempData = [];
     
     val.forEach((element:any) => {
-      console.log(element)
+      console.log(element.id + " gotov servis")
       this.nadjiKartu(element)
    
     });
@@ -81,12 +81,12 @@ async nadjiKartu(oglas:any){
    
 
 
-   
+  
 
       oglas.karta = res.data[0]
       oglas.count = 1;
       this.tempData.push(oglas)
-      
+      console.log("item "+ JSON.stringify(oglas))
           
  
 

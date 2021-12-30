@@ -56,7 +56,7 @@ export class KartaPreviewComponent implements OnInit {
     }
 
     prikaziVise(){
-      console.log("prikazi vise"+ this.oglas.id) 
+    
       this.prikaziViseEmitter.emit(this.oglas);//salje podatke roditelju
       
   }

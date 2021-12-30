@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -17,13 +18,13 @@ export class CheckoutComponent implements OnInit {
   cart$:Observable<Proizvod[]> = new Observable;
   sum$: Observable<Number>  = new Observable
   cartItems:any = [];
-  transakcija:Transakcija = {} as Transakcija;
+ 
   transakcijaForma: FormGroup;
   transakcijaFormaPlacanje: FormGroup;
   submitted:boolean = false;
   kreditnaKarticaChecked:boolean=false;
   
-  constructor(private store:Store, private fb:FormBuilder, private router:Router) {
+  constructor(private store:Store, private fb:FormBuilder, private router:Router, private firestore:FirebaseService) {
 
     this.transakcijaForma = this.fb.group({
       ulica: fb.control('',[Validators.required, Validators.minLength(3)]),
@@ -49,10 +50,12 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
     this.sum$ = this.store.select(selectPriceKorpa)
     this.cart$.subscribe(val=>
       {
         this.cartItems = val
+        console.log("cart "+ this.cartItems[0].karta.name )
       })
   }
 
@@ -61,21 +64,17 @@ export class CheckoutComponent implements OnInit {
     this.submitted = true;
     console.log("tip placanja je "+this.control('tipPlacanja')?.value)
     if(this.control('tipPlacanja')?.value == 'false' && this.transakcijaForma.valid ){
+      console.log("cart items trenutno " + this.cartItems[0])
+      this.firestore.checkout(this.cartItems)
       this.router.navigate(['/success'], {queryParams: {id:2321532423}});
 
     }
     else if (this.transakcijaForma.valid && this.transakcijaFormaPlacanje.valid ){
+      console.log("cart items trenutno " + this.cartItems[0])
+      this.firestore.checkout(this.cartItems)
       this.router.navigate(['/success'], {queryParams: {id:2321532423}});
     }
-  
-    this.findInvalidControls( )
-  
-    console.log("Poslato" + this.transakcijaForma.valid)
-   
-    if(this.transakcijaForma.valid){
-
-    }
-    
+ 
   }
 
   public control(name:string){

@@ -29,7 +29,7 @@ class="row"
 
 <div class="row" *ngIf="prikaziFormu==true" style="margin-top: 20px;">
 
-<app-add-oglas></app-add-oglas>
+<app-add-oglas ></app-add-oglas>
 
 </div>
 </div>
@@ -37,8 +37,9 @@ class="row"
 
     class="my-grid-container col-md-6"
   >
-    <div
-      *ngFor="let item of oglasiData | searchFilter: input "
+<ng-container  *ngFor="let item of oglasiData | searchFilter: input " >
+    <div *ngIf="item.quantity>0"
+     
       style="
         width: 220px;
         border-radius: 10px;
@@ -49,12 +50,14 @@ class="row"
       "
    
     > 
-      <app-karta-preview
+      <app-karta-preview 
         [oglas]="item"
         (prikaziViseEmitter)="displayProductPreview($event)"
       ></app-karta-preview>
     </div>
+</ng-container>
   </div>
+  
   <div
   class="col-md-2"
     *ngIf="prikaziDetalje"

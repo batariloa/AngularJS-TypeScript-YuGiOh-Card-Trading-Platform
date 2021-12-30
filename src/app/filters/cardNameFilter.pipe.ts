@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Proizvod } from '../redux/cart.model';
 
-@Pipe({ name: 'searchFilter' })
+@Pipe({ name: 'searchFilter',
+pure:false })
 export class SearchFilterPipe implements PipeTransform {
 
   transform(snapshotArr: any, searchValue: string) {

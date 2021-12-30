@@ -73,7 +73,9 @@ let userid;
 
 
     
-
+    {
+      
+    }
    }
 
    async addOglas(proizvod:Proizvod){
@@ -84,6 +86,7 @@ let userid;
       stanje:proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
+     
    
     })
 
@@ -94,7 +97,11 @@ let userid;
 
    async getAllOglasi(){
    
-   this.oglasi = this.firestore.collection('oglasi').valueChanges();
+   this.oglasi = this.firestore.collection('oglasi').valueChanges( {
+     idField:'id'
+   }  );
+
+   console.log("gotov servis " )
    return this.oglasi;
 
  
@@ -109,7 +116,13 @@ let userid;
 
     
    
-
+   checkout(items:Proizvod[]){
+     items.forEach(element=>
+      {
+        this.firestore.collection("oglasi").doc(element.id).update({quantity: element.quantity-element.count});
+      })
+   
+   }
    
 
 

@@ -30,7 +30,7 @@ export const reducer = createReducer(
       }
      
     })
-    if(dodaj==true){
+    if(dodaj==true && productCopy.count<=productCopy.quantity){
       entriesClone.items.push(productCopy);
     
     }
@@ -43,13 +43,13 @@ on(ActionsCart.DeleteFromCart, (entries, product) => {
  
 
   entriesClone.items.forEach(element => {
-    if(element.id===product.id && element.count==1){
+    if(element.cardid===product.karta.id && element.count==1){
      
       entriesClone.items.splice(entriesClone.items.findIndex(function(i){
    
-        return i.id === product.id;
+        return i.cardid === product.karta.id;
     }), 1);
-    } else if(element.id===product.id){
+    } else if(element.cardid===product.karta.id){
       element.count--;
     }
 
