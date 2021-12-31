@@ -7,8 +7,9 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/co
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DocumentSnapshot, Firestore } from 'firebase/firestore';
 import { map, Observable, tap } from 'rxjs';
-import { Proizvod } from '../redux/cart.model';
+import { OrderInfo, Proizvod } from '../redux/cart.model';
 import { SessionServiceService } from './session-service.service';
+import { identifierName } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -116,15 +117,33 @@ let userid;
 
     
    
-   checkout(items:Proizvod[]){
+   checkout(items:Proizvod[], info:OrderInfo){
      items.forEach(element=>
       {
+        this.dodajTransakciju(element, info);
         this.firestore.collection("oglasi").doc(element.id).update({quantity: element.quantity-element.count});
       })
    
    }
    
+dodajTransakciju(item:Proizvod, info:OrderInfo){
+  
+this.firestore.collection('transactions').add({
+ 
+  street: info.street,
+  street2:info.street2,
+  zip:info.zip,
+  city:info.city,
+  state: info.state,
+  paymentType : info.paymentType,
+  buyerId: sessionStorage.getItem('user'),
+  sellerId: item.user,
+  quantity: item.quantity,
+  cardid: item.karta.id
 
+})
+
+}
 
 
    logout(){

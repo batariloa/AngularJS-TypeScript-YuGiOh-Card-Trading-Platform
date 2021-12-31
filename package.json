@@ -27,6 +27,7 @@
     "firebase": "^9.6.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "ng": "^0.0.0",
     "ng-redux": "^4.4.3",
     "ngrx": "^0.0.1-security",
     "popper": "^1.0.1",

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Transakcija } from 'src/app/models/transakcija';
-import { Proizvod } from 'src/app/redux/cart.model';
+import { OrderInfo, Proizvod } from 'src/app/redux/cart.model';
 import { selectCart, selectPriceKorpa } from 'src/app/redux/cart.selectors';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   cart$:Observable<Proizvod[]> = new Observable;
   sum$: Observable<Number>  = new Observable
   cartItems:any = [];
- 
+ info:OrderInfo = {} as OrderInfo;
   transakcijaForma: FormGroup;
   transakcijaFormaPlacanje: FormGroup;
   submitted:boolean = false;
@@ -32,6 +32,7 @@ export class CheckoutComponent implements OnInit {
       grad: fb.control('',[Validators.required]),
       zip: fb.control('',[Validators.required]),
       tipPlacanja: fb.control('',[Validators.required]),
+      ulica2:fb.control('',null)
       
       
     })
@@ -64,17 +65,27 @@ export class CheckoutComponent implements OnInit {
     this.submitted = true;
     console.log("tip placanja je "+this.control('tipPlacanja')?.value)
     if(this.control('tipPlacanja')?.value == 'false' && this.transakcijaForma.valid ){
-      console.log("cart items trenutno " + this.cartItems[0])
-      this.firestore.checkout(this.cartItems)
-      this.router.navigate(['/success'], {queryParams: {id:2321532423}});
+     this.posaljiTransakciju()
 
     }
     else if (this.transakcijaForma.valid && this.transakcijaFormaPlacanje.valid ){
-      console.log("cart items trenutno " + this.cartItems[0])
-      this.firestore.checkout(this.cartItems)
-      this.router.navigate(['/success'], {queryParams: {id:2321532423}});
+     this.posaljiTransakciju()
     }
+  }
+
+  posaljiTransakciju(){
+    console.log("cart items trenutno " + this.cartItems[0])
+    this.info.paymentType = this.transakcijaForma.get('tipPlacanja')!.value;
+  this.info.street = this.transakcijaForma.get('ulica')!.value;
+  this.info.street2 = this.transakcijaForma.get('ulica2')!.value;
+  this.info.zip= this.transakcijaForma.get('zip')!.value;
+  this.info.city = this.transakcijaForma.get('grad')!.value;
+  this.info.state = this.transakcijaForma.get('drzava')!.value;
+  console.log("ulica je " +this.info.street!)
  
+    this.firestore.checkout(this.cartItems, this.info)
+    this.router.navigate(['/success'], {queryParams: {id:2321532423}});
+  
   }
 
   public control(name:string){

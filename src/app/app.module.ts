@@ -31,6 +31,7 @@ import { SearchFilterPipe } from './filters/cardNameFilter.pipe';
 import { MyProductsComponent } from './components/my-products/my-products.component';
 import { SessionServiceService } from './services/session-service.service';
 import { LoginGuardService } from './services/login-guard.service';
+import { TransakcijePreviewComponent } from './components/transakcije-preview/transakcije-preview.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { LoginGuardService } from './services/login-guard.service';
     UspesnoPlacanjeComponent,
     LoginComponent,
     RegisterComponent,
-    AddOglasComponent,  SearchFilterPipe, MyProductsComponent
+    AddOglasComponent,  SearchFilterPipe, MyProductsComponent, TransakcijePreviewComponent
 
   ],
   imports: [

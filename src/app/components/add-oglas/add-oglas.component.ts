@@ -92,6 +92,7 @@ dodajOglas(){
   this.oglasDodaj.cardid = this.izabranaKartaId;
   this.oglasDodaj.stanje = this.oglasDodaj.stanje;
   
+  
 
   this.fireService.addOglas(this.oglasDodaj);
      

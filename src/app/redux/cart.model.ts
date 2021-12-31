@@ -1,3 +1,4 @@
+import { ZlibParams } from "zlib";
 
 
 export interface ICart {
@@ -13,7 +14,7 @@ export class Proizvod {
     quantity:number = 0;
     price: number= 0;
     karta: Karta = {} as Karta;
-    user:User = {} as User;
+    user:string = "";
     cardid:number = 0;
     set: string = "";
     stanje: string = "";
@@ -64,4 +65,14 @@ export interface User {
 
 export interface card_sets{
     set_name:string;
+}
+
+export interface OrderInfo {
+    street:string,
+    street2:string,
+    zip:string,
+    paymentType:string,
+    city:string,
+    state:string
+
 }
