@@ -16,6 +16,7 @@ import { identifierName } from '@angular/compiler';
 export class FirebaseService {
 isLoggedIn = false;
 oglasi:Observable<any[]> = new Observable;
+transakcije:Observable<any[]> = new Observable;
 user: string ="";
 
   constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase, private session:SessionServiceService) {
@@ -83,7 +84,7 @@ let userid;
     
     await this.firestore.collection('oglasi').add({
       cardid: proizvod.cardid,
-      user:this.user,
+      user:sessionStorage.getItem('user'),
       stanje:proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
@@ -116,7 +117,15 @@ let userid;
    } 
 
     
-   
+   async getTransakcije(){
+    this.transakcije = this.firestore.collection('transactions').valueChanges();
+    return this.transakcije;
+ 
+  
+   } 
+
+    
+
    checkout(items:Proizvod[], info:OrderInfo){
      items.forEach(element=>
       {
@@ -138,8 +147,9 @@ this.firestore.collection('transactions').add({
   paymentType : info.paymentType,
   buyerId: sessionStorage.getItem('user'),
   sellerId: item.user,
-  quantity: item.quantity,
-  cardid: item.karta.id
+  quantity: item.count,
+  cardid: item.karta.id,
+  oglasId: item.id
 
 })
 

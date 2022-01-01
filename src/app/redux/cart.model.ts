@@ -1,3 +1,4 @@
+import { Transaction } from "firebase/firestore";
 import { ZlibParams } from "zlib";
 
 
@@ -18,6 +19,8 @@ export class Proizvod {
     cardid:number = 0;
     set: string = "";
     stanje: string = "";
+  
+   
 
 }
 
@@ -73,6 +76,9 @@ export interface OrderInfo {
     zip:string,
     paymentType:string,
     city:string,
-    state:string
+    state:string,
+    oglasId: string;
+    quantity:string;
+    
 
 }

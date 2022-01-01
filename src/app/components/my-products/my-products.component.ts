@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Proizvod } from 'src/app/redux/cart.model';
+
+import { OrderInfo, Proizvod } from 'src/app/redux/cart.model';
 import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { SessionServiceService } from 'src/app/services/session-service.service';
@@ -14,7 +15,14 @@ import { SessionServiceService } from 'src/app/services/session-service.service'
 export class MyProductsComponent implements OnInit {
   mojiOglasi:Proizvod[] = [];
   mojiOglasi$:Observable<Proizvod[]> = new Observable();
+
+  transakcije:OrderInfo[] = [];
+  transakcije$:Observable<OrderInfo[]> = new Observable();
+
+  transakcijeIzabrane:OrderInfo[] = [];
   user: string = "";
+  prikaziTransakcije = false;
+  odabranaTransakcija = "";
 
 
   constructor(private router:Router, private session:SessionServiceService, private firebase: FirebaseService, private api:ApiService) { }
@@ -24,7 +32,7 @@ export class MyProductsComponent implements OnInit {
     console.log(this.user)
     this.mojiOglasi$ = of(this.mojiOglasi);
     this.ucitajOglase();
-
+    this.transakcije$ = of(this.transakcije)
   }
   
  obrisi(item:any){
@@ -73,4 +81,33 @@ export class MyProductsComponent implements OnInit {
     
        });
  }
+
+ async displayTransactions(id:string){
+this.odabranaTransakcija = id;
+console.log("eo ga id " + id)
+this.prikaziTransakcije = true;
+await (await this.firebase.getTransakcije()).subscribe(val=>
+  {
+    this.transakcije = []
+    val.forEach(element=>{
+      console.log(element.oglasId)
+
+      if(element.oglasId == id){
+        console.log("dodat!")
+        this.transakcije.push(element)
+
+      }
+      
+    })
+    this.odabranaTransakcija = id;
+this.prikaziTransakcije = true;
+console.log("evo su " + this.transakcije[0])
+  }
+  );
+
+
+ }
+ 
 }
+
+

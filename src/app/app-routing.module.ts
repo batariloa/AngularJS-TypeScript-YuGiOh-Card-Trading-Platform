@@ -14,6 +14,7 @@ import { LoginGuardService } from './services/login-guard.service';
 
 const routes: Routes = [
   { path: 'feed', component: FeedComponent, canActivate: [LoginGuardService] },
+  { path: 'transactions', component: FeedComponent, canActivate: [LoginGuardService] },
   { path: '', component: FeedComponent , canActivate: [LoginGuardService]},
 
   { path: 'myproducts', component: MyProductsComponent, canActivate: [LoginGuardService] },

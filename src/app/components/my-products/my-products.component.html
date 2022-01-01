@@ -15,7 +15,7 @@
             <p style="font-weight: 400;">Nemate nijedan aktivan oglas.</p>
         </div>
       
-        <div *ngIf="mojiOglasi.length!=0" class ="row justify-content-center">
+        <div *ngIf="mojiOglasi.length!=0" class ="row justify-content-center" style="margin-top: 10px;">
         <div class="imgDiv col-sm">
            <b></b>
         </div>
@@ -30,10 +30,10 @@
             <b>Cena</b>
         </div>
         <div class="col-sm my-auto">
-            <b>Kolicina</b>
+            <b>Na stanju</b>
          </div>
          <div class="col-sm my-auto">
-            <b>Prodato</b>
+          
         </div>
         <div class="col-sm my-auto">
           
@@ -64,7 +64,7 @@
  </div>
 <div class="col-sm my-auto">
 
-    <button (click)="nazad()" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button>	</div>
+    <button (click)="displayTransactions(item.id)" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button>	</div>
  
 </div>
 <div  class ="row justify-content-center ">
@@ -75,3 +75,8 @@
     <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Nastavi kupovinu</button> 
         <button routerLink="/checkout" type="button" class="button cart_button_checkout">Plaćanje</button> </div>
 </div>
+
+
+</div><app-transakcije-preview *ngIf="prikaziTransakcije" [transakcije]="transakcije" style="position: fixed; width:100%; height:80%; top:120px; ">
+
+</app-transakcije-preview>

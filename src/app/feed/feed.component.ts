@@ -85,6 +85,7 @@ async nadjiKartu(oglas:any){
 
       oglas.karta = res.data[0]
       oglas.count = 1;
+    
       this.tempData.push(oglas)
       console.log("item "+ JSON.stringify(oglas))
           

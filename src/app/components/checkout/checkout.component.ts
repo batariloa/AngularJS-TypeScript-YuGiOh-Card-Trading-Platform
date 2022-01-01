@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Transakcija } from 'src/app/models/transakcija';
 import { OrderInfo, Proizvod } from 'src/app/redux/cart.model';
 import { selectCart, selectPriceKorpa } from 'src/app/redux/cart.selectors';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
