@@ -108,6 +108,7 @@ console.log("evo su " + this.transakcije[0])
 
  }
  
+ 
 }
 
 

@@ -22,7 +22,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'success', component: UspesnoPlacanjeComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'feed', component: FeedComponent },
   { path: 'cart', component: CartComponent },
   { path: 'productPreview', component: ProductPreviewComponent },
   { path: 'cartPreview', component: CartPreviewComponent },

@@ -41,7 +41,7 @@ export const initialState:ICart= {
 export interface Karta {
     author:string;
     likes:number;
-    text:string;
+    desc:string;
     date:string;
     id:number;
     name: string;
@@ -81,4 +81,8 @@ export interface OrderInfo {
     quantity:string;
     
 
+}
+
+export interface UserData{
+    displayName: string;
 }

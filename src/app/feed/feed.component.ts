@@ -42,7 +42,7 @@ input:string = "";
   ngOnInit(): void {
 
     this.oglasiData$ = of(this.oglasiData);
-   console.log("feed element")
+
 
   this.nadjiOglase()
     
@@ -59,7 +59,8 @@ input:string = "";
      this.tempData = [];
     
     val.forEach((element:any) => {
-      console.log(element.id + " gotov servis")
+
+    
       this.nadjiKartu(element)
    
     });
@@ -75,8 +76,7 @@ input:string = "";
 }
 
 async nadjiKartu(oglas:any){
-
-  console.log("koja karta" + oglas.cardid);
+  
  (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
    
 
@@ -87,7 +87,7 @@ async nadjiKartu(oglas:any){
       oglas.count = 1;
     
       this.tempData.push(oglas)
-      console.log("item "+ JSON.stringify(oglas))
+   
           
  
 
@@ -113,6 +113,11 @@ showForm(){
   else{
     this.prikaziFormu=false;
   }
+}
+
+zatvoriPreview($event:any){
+  this.prikaziDetalje= false;
+  console.log("aktiviran")
 }
 }
 

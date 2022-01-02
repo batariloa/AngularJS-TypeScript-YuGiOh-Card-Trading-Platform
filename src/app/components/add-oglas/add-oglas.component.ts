@@ -90,7 +90,7 @@ private filterCards(name:string){
 
 dodajOglas(){
   this.oglasDodaj.cardid = this.izabranaKartaId;
-  this.oglasDodaj.stanje = this.oglasDodaj.stanje;
+
   
   
 
@@ -111,4 +111,8 @@ promeniKartu(karta:Karta){
 
 }
 
+promeniSet(set:any){
+  this.oglasDodaj.set = set.value
+console.log("promena seta" + set.value)
+}
 }

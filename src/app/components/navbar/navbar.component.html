@@ -4,20 +4,21 @@
   <!-- Latest compiled and minified CSS -->
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FFFFFF;">
     <button class="navbar-toggler navbar-nav mr-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span> 
     </button>
-    <a class="navbar-brand mx-left" href="#">My Brand</a>
+    <a class="navbar-brand mx-left" href="#">YuGiMarket</a>
     <ul class="nav navbar-nav">
         <li class="dropdown">
             <a href="#" class="nav-link dropdown-toggle " id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"> 
-                Welcome, {{username}} 
+                Dobrodosao, Blimblom {{username}} 
             </a>
+            <span class="iconify" data-icon="bx:bxs-home"></span>   
             <div class="dropdown-menu dropdown-menu-left position-absolute" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" routerLink="/myproducts">Moji oglasi</a>
                 <a class="dropdown-item" href="#">Another action</a>
@@ -30,10 +31,12 @@
           
                  
     </ul>
-    <div (click)="prikaziKorpu();" class="nav-item ml-auto d-flex d-none d-md-flex flex-row align-items-center"> <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
+    <div (click)="prikaziKorpu();" class="nav-item ml-auto d-flex d-none d-md-flex flex-row align-items-center"> <span style="width:45px; font-size:35px;" class="material-icons">shopping_cart</span>
         <div class="d-flex flex-column ms-2"> <span class="qty"> {{countProizvod$ |async}} Proizvoda</span> <span class="fw-bold"> {{sumProizvod$|async }} RSD</span> </div>
     </div>
+
 </nav>
  
 
    <app-cart-preview *ngIf="showCart" style="float: right;"></app-cart-preview> 
+   <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>

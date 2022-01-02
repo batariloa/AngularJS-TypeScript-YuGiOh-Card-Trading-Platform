@@ -22,7 +22,7 @@ body {
 }
 
 .shop-bag {
-    background-color: #000;
+
     color: #fff;
     height: 50px;
     width: 50px;
@@ -42,3 +42,4 @@ body{
 a {
     font-size: 18px;
 }
+

@@ -7,7 +7,7 @@ import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/co
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DocumentSnapshot, Firestore } from 'firebase/firestore';
 import { map, Observable, tap } from 'rxjs';
-import { OrderInfo, Proizvod } from '../redux/cart.model';
+import { OrderInfo, Proizvod, User, UserData } from '../redux/cart.model';
 import { SessionServiceService } from './session-service.service';
 import { identifierName } from '@angular/compiler';
 @Injectable({
@@ -17,7 +17,7 @@ export class FirebaseService {
 isLoggedIn = false;
 oglasi:Observable<any[]> = new Observable;
 transakcije:Observable<any[]> = new Observable;
-user: string ="";
+user: Observable<any> = new Observable;
 
   constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase, private session:SessionServiceService) {
    
@@ -37,14 +37,9 @@ let userid;
       sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
       sessionStorage.setItem('login', "true");
      sessionStorage.setItem('user', res.user?.uid! );
-     this.user = res.user?.uid!;
-       await   this.firestore.collection('users').doc(res.user?.uid).valueChanges().subscribe(
-         data =>{
-         
-          console.log(data)
-          localStorage.setItem('userdata',JSON.stringify(data));
-         }
-       )
+   
+       this.user = this.firestore.collection('users').doc(res.user?.uid).valueChanges()
+     
             
         
 
@@ -55,7 +50,7 @@ let userid;
    }
 
    async signup(email:string, password:string, username:string){
-    let user;
+    
     await this.firebaseAuth.createUserWithEmailAndPassword(email,password).then(
 
      res=>{
@@ -88,6 +83,7 @@ let userid;
       stanje:proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
+      set: proizvod.set
      
    
     })

@@ -1,11 +1,11 @@
 
-<div style="width:220px; height: 400px; float:right; margin: 0 auto" *ngIf="oglas">
+<div style="width:240px; height: 430px; float:left; margin: 0 auto;  " *ngIf="oglas">
     <div style="display: block ; width: 260px; height: 40px;">
    
   
 
     </div>
-    <div style="display: block ; width: 220px; height: 140px; margin:0 auto">
+    <div style="display: block ; width: 220px; height: 180px; margin:0 auto">
     <div style="width: 100%;  margin: 0 auto;" >
       <img style="width: 100px; height: 155px;
        margin-left: auto;
@@ -16,10 +16,18 @@
       <div class='cvp'>
       <div class="name-div" style="height:50px">
         <h5 class="card-title font-weight-bold" >  {{oglas.karta.name}}</h5>
+           
+
       </div>
-        <p class="card-text">{{oglas.price}} RSD</p> <a  (click)="prikaziVise()" class="btn details px-auto">pogledaj više</a><br /> 
-        <a (click)="dodajUKorpu()" class="btn cart px-auto">ADD TO CART</a>
+      
+        <p class="card-text">{{oglas.price}} RSD</p>
+        <p style="margin:0 auto; margin-bottom:10px">Na stanju: <a style="color:green; font-weight: 500;">{{oglas.quantity}}</a></p>  
+        <a  (click)="prikaziVise()" class="btn details px-auto">pogledaj više</a><br /> 
+
+   
+        <a (click)="dodajUKorpu()" style="color:white" class="btn cart px-auto">ADD TO CART</a>
     </div>
+
     </div>
     </div>
    

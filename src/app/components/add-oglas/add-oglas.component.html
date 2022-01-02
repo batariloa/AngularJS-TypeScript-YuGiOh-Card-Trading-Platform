@@ -1,8 +1,8 @@
 <div style="margin-bottom: 20px; margin-top: 15px;" class="row" >
   <div class="col">
-    <img [src]="kartaImgUrl" style="position:relative; left:10px; top:20px; height: 200px">
+    <img [src]="kartaImgUrl" style="position:relative; left:10px; top:20px; height: 200px; float:left">
   </div>
-    <form name="forma"  [formGroup]="forma" style="margin:0 auto" >
+    <form name="forma"  [formGroup]="forma" style="margin:0 auto; float:left;width: 650px; padding-left: 20px ;" >
     
       <div class="row">
        
@@ -36,11 +36,11 @@
     
           <div class="col">
             <label for="formGroupExampleInput">Set</label>
-            <select
-            formControlName="brojSobe"  
+            <select 
+        (change)="promeniSet($event.target)"
             name="broj"  class="form-control" id="formGroupExampleInput" [value]="oglasDodaj.set" >
             
-          <option [value]="item.set_name" *ngFor="let item of setovi">{{item.set_name}}</option>
+          <option  [value]="item.set_name" *ngFor="let item of setovi">{{item.set_name}}</option>
             
           </select>
     
@@ -79,7 +79,7 @@
           </div>
         </div>
     
-    <div class="row">
+    <div class="row" style=" ">
           <div class="col">
             <label for="formGroupExampleInput">Cena</label>
             <input [(ngModel)]="oglasDodaj.price"
@@ -96,7 +96,7 @@
           </div>
     
     
-          <div class="col">
+          <div class="col" style=" margin-bottom: 20px">
             <label for="formGroupExampleInput2">Količina</label>
             <input  
             [(ngModel)]="oglasDodaj.quantity"
@@ -112,16 +112,17 @@
         
             </div>
           </div>
-      
+          <div style="width: 100%; text-align: center;">
+          <a (click)="dodajOglas()" style="width:100%; color:white" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-plus-sign"></span> Objavi
+          </a></div>
         </form>
        
       </div>
      
       <div style=" margin-top: 23px;  display: block; margin-bottom: 10px; width: 100%;">
     
-        <button (click)="dodajOglas()" type="submit" class="btn btn-primary mb-10" style="
-        display: block;margin-top: 40px; margin: 0 auto;"  >Objavi oglas</button>
-
+       
 
 
       </div>

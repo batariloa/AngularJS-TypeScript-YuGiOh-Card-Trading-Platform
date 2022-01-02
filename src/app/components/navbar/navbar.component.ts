@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
 import { SessionServiceService } from 'src/app/services/session-service.service';
 @Component({
   selector: 'app-navbar',
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit {
   sumProizvod$: Observable<number>;
   showCart: boolean = false;
 username: string = ""
+
   @Output() logoutEmit: EventEmitter<boolean> = new EventEmitter();
 
 
@@ -34,10 +36,9 @@ username: string = ""
   }
 
   ngOnInit(): void {
-  
- var  localID  = JSON.parse(localStorage.getItem('userdata') ||"");
- console.log(localID['displayName']  + " =displayName")
- this.username = localID['displayName'];
+ this.serviceLogin.user.subscribe(val=>{
+   this.username = val.displayName;
+ })
 
   
   }
@@ -52,7 +53,7 @@ username: string = ""
 }
 logout(){
   this.serviceLogin.logout();
-  this.logoutEmit.emit(false);
+
 }
 
 

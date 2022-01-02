@@ -56,8 +56,14 @@ body {
 a {
     font-size: 16px;
     font-weight: 600;
+    
 }
 .card-title{
     font-size: 16px;
     overflow: hidden;
   text-overflow: ellipsis;}
+
+  .card-text{
+      font-size: 17px;
+      font-weight:500
+  }
