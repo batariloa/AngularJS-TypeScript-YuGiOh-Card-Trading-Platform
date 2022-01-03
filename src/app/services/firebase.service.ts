@@ -17,7 +17,7 @@ export class FirebaseService {
 isLoggedIn = false;
 oglasi:Observable<any[]> = new Observable;
 transakcije:Observable<any[]> = new Observable;
-user: Observable<any> = new Observable;
+user: Observable<any> = new Observable
 
   constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase, private session:SessionServiceService) {
    
@@ -38,8 +38,12 @@ let userid;
       sessionStorage.setItem('login', "true");
      sessionStorage.setItem('user', res.user?.uid! );
    
-       this.user = this.firestore.collection('users').doc(res.user?.uid).valueChanges()
-     
+      this.firestore.collection('users').doc(res.user?.uid).get().subscribe((val:any)=>{
+        sessionStorage.setItem('username', val.data().displayName)
+        console.log(val.data().displayName)
+    
+      })
+    
             
         
 
@@ -56,9 +60,10 @@ let userid;
      res=>{
     
       sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
-
+      sessionStorage.setItem('login','true');
       return this.firestore.collection('users').doc(res.user?.uid).set({
-         displayName: username
+         displayName: username,
+         
        })
       
         this.isLoggedIn = true;
@@ -83,7 +88,8 @@ let userid;
       stanje:proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
-      set: proizvod.set
+      set: proizvod.set,
+      visible:'true'
      
    
     })
@@ -151,9 +157,23 @@ this.firestore.collection('transactions').add({
 
 }
 
+  obrisiOglas(proizvod:Proizvod){
+    this.firestore.collection('oglasi').doc(proizvod.id).set({
+     visible: 'false'
+    })
+  }
+
+  findUsername(id:string){
+    return this.firestore.collection('users').doc(id).valueChanges();
+  
+  }
 
    logout(){
      this.firebaseAuth.signOut();
      sessionStorage.setItem('login', "false");
    }
+
+
+
+   
 }

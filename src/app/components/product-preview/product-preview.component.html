@@ -11,19 +11,24 @@
     <div  style="width:80%; margin: 0 auto; " class="card"> 
         <p>{{proizvod.karta.desc}} </p>
            </div>
-           <div class="justify-content-center" style="margin-top:10px">
-<p class="row justify-content-center" style="font-size: 20px; font-weight: 500;">Set</p>
-<p class="row justify-content-center" style="font-size: 15px; ">{{proizvod.set}}</p>
+           <div class=" row justify-content-center" style="margin-top:10px">
+<p class="col " style="font-size: 18px; font-weight: 500;"><b>Set:</b> {{proizvod.set}}</p>
+<p class="col" style="font-size: 18px; font-weight: 500; "><b>Stanje:</b> {{proizvod.stanje}}</p>
            </div>
-    <div >
-        <h5 class="card-title font-weight-bold">{{proizvod.price}} RSD</h5><br>
-        <p>Poredjenje cena:</p>
-        <br> Amazon: {{proizvod.karta.card_prices[0].amazon_price}} $
-        <br> Card Market: {{proizvod.karta.card_prices[0].cardmarket__price}} $
-        <br> TCG Player: {{proizvod.karta.card_prices[0].tcgplayer_price}} $
+  
+        <div class=" row justify-content-center" style="margin-top:10px">
+            <p class="col " style="font-size: 18px; font-weight: 500;"><b>Cena:</b> {{proizvod.price}} RSD</p>
+            <p class="col" style="font-size: 18px; font-weight: 500; "><b>Korisnik:</b> {{username}}</p>
+                       </div>
+              
+      
+        <div class="row">
+        <p class="col"> Amazon: {{proizvod.karta.card_prices[0].amazon_price}} $</p>
+        <p class="col">   Card Market: {{proizvod.karta.card_prices[0].cardmarket__price}} $ </p> 
+        <p class="col"> TCG Player: {{proizvod.karta.card_prices[0].tcgplayer_price}} $ </p>
     </div>
 
-    <div style="width: 100%; text-align: center;">
+    <div style="width: 100%; text-align: center; margin-top: 20px;">
         <a (click)="dodajUKorpu()" style="width:100%; color:white" class="btn btn-info btn-lg">
           <span class="glyphicon glyphicon-add"></span> Dodaj u korpu
         </a></div>

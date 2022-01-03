@@ -1,28 +1,29 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
 
-    <!-- Icon -->
     <div class="fadeIn first">
       <img src="/assets/img/YuGiMarket-logos_black.png" id="icon" alt="User Icon" />
     </div>
 
-    <!-- Login Form -->
-    <form>
-      <input type="text" [(ngModel)]="email" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" [(ngModel)]="username" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" [(ngModel)]="password" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" (click)="register()" class="fadeIn fourth" value="Log In">
+    <form [formGroup]="forma">
+      
+      <input type="text" formControlName="email" [(ngModel)]="email" id="login" class="fadeIn second" name="login" placeholder="E-mail adresa">
+      <p class="invalid" *ngIf="control('email')?.errors" >Email je obavezan.</p>
+
+      <input type="text" formControlName="username" [(ngModel)]="username" id="login" class="fadeIn second" name="login" placeholder="Korisničko ime">
+      <p class="invalid" *ngIf="control('username')?.errors" >Korisničko ime mora imati najmanje 6 karaktera.</p>
+      <input type="text" formControlName="password" [(ngModel)]="password" id="password" class="fadeIn third" name="login" placeholder="Željena lozinka">
+      <p class="invalid" *ngIf="control('password')?.errors">Šifra mora sadržati najmanje 6 karaktera.</p>
+      <input type="submit" (click)="register()" class="fadeIn fourth" value="Registruj se">
     </form>
 
-    <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" routerLink="/login">Back to login</a>
+      <a class="underlineHover" [routerLink]="['/login']">Nazad na login</a>
     </div>
 
   </div>

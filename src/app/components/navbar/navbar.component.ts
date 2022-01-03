@@ -12,6 +12,7 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { SessionServiceService } from 'src/app/services/session-service.service';
+import { JsonpClientBackend } from '@angular/common/http';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit {
   countProizvod$: Observable<number>;
   sumProizvod$: Observable<number>;
   showCart: boolean = false;
-username: string = ""
+username:any;
 
   @Output() logoutEmit: EventEmitter<boolean> = new EventEmitter();
 
@@ -36,10 +37,9 @@ username: string = ""
   }
 
   ngOnInit(): void {
- this.serviceLogin.user.subscribe(val=>{
-   this.username = val.displayName;
- })
+ this.username = sessionStorage.getItem('username')
 
+ 
   
   }
   prikaziKorpu(){

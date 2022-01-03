@@ -12,11 +12,11 @@
     <button class="navbar-toggler navbar-nav mr-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span> 
     </button>
-    <a class="navbar-brand mx-left" href="#">YuGiMarket</a>
+    <a class="navbar-brand mx-left" [routerLink]="['/feed']">YuGiMarket</a>
     <ul class="nav navbar-nav">
         <li class="dropdown">
             <a href="#" class="nav-link dropdown-toggle " id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"> 
-                Dobrodosao, Blimblom {{username}} 
+                Dobrodosao, {{username}} 
             </a>
             <span class="iconify" data-icon="bx:bxs-home"></span>   
             <div class="dropdown-menu dropdown-menu-left position-absolute" aria-labelledby="navbarDropdown">

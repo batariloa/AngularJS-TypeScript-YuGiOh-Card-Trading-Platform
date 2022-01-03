@@ -49,7 +49,7 @@ export class MyProductsComponent implements OnInit {
     val.forEach((element:any) => {
       console.log("provera " + element.user)
     console.log("provera2" + this.user)
-      if(element.user == this.user)
+      if(element.user == this.user && element.visible=='true')
       this.nadjiKartu(element)
    
     });
@@ -92,8 +92,8 @@ await (await this.firebase.getTransakcije()).subscribe(val=>
     val.forEach(element=>{
       console.log(element.oglasId)
 
-      if(element.oglasId == id){
-        console.log("dodat!")
+      if(element.oglasId == id ){
+        
         this.transakcije.push(element)
 
       }
@@ -106,6 +106,9 @@ console.log("evo su " + this.transakcije[0])
   );
 
 
+ }
+ obrisiOglas(item:any){
+   this.firebase.obrisiOglas(item);
  }
  
  
