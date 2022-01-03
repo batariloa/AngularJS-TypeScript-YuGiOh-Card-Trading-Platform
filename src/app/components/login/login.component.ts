@@ -3,6 +3,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionServiceService } from 'src/app/services/session-service.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,40 @@ export class LoginComponent implements OnInit {
   @Output() register: EventEmitter<any> = new EventEmitter();
   username:string="";
   password:string=""; 
-  constructor(private loginService: FirebaseService, private router:Router, private session: SessionServiceService) { }
+  submitted= false;
+  authenticationFailed = false;
+  forma:FormGroup;
+  constructor(private loginService: FirebaseService, private router:Router, private session: SessionServiceService, private fb:
+    FormBuilder) {
+
+      this.forma = this.fb.group({
+     
+        email: fb.control('',[Validators.email,Validators.required]),
+        password: fb.control('',[Validators.minLength(6),Validators.required]),
+    })
+
+     }
 
   ngOnInit(): void {
-    console.log("nemoj zekis  "+ sessionStorage.getItem('login') )
+   
   }
 
   async login(){
+    this.submitted=true;
+    
+    if(this.forma.valid)
+    this.authenticationFailed=true
+    
  this.loginService.singin(this.username, this.password).then(
    () =>{
-    console.log("trenutno je " + sessionStorage.getItem('login'))
+ 
     if(sessionStorage.getItem('login') == "true"){
-   
+      console.log("tacno ")
       this.router.navigate(['/feed'])
+      
+    }
+    else {
+   
     }
    }
  );
@@ -37,5 +59,10 @@ export class LoginComponent implements OnInit {
   registerRedirect(){
     this.router.navigate(['/register'])
 
+  }
+
+  public control(name:string){
+    console.log(this.forma.get(name)?.errors)
+    return this.forma.get(name);
   }
 }

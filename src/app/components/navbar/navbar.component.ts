@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of, Subject } from 'rxjs';
 import { AppState } from 'src/app/models/app.state';
@@ -18,7 +18,7 @@ import { JsonpClientBackend } from '@angular/common/http';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
   countProizvod$: Observable<number>;
   sumProizvod$: Observable<number>;
   showCart: boolean = false;
@@ -41,6 +41,10 @@ username:any;
 
  
   
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      this.ngOnInit()
   }
   prikaziKorpu(){
     if(this.showCart ==false){

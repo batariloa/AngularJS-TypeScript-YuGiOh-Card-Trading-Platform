@@ -5,21 +5,27 @@
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
+ 
 
-    <!-- Icon -->
+ 
     <div class="fadeIn first">
       <img src="/assets/img/YuGiMarket-logos_black.png" id="icon" alt="User Icon" />
     </div>
 
-    <!-- Login Form -->
-    <form>
-      <input type="text" [(ngModel)]="username" id="login" class="fadeIn second" name="login" placeholder="E-mail">
-      <input type="text" [(ngModel)]="password" id="password" class="fadeIn third" name="login" placeholder="Lozinka">
+  
+    <form [formGroup]="forma">
+      <input type="text" formControlName="email" [(ngModel)]="username" class="fadeIn second" placeholder="E-mail">
+      <p *ngIf="submitted && control('email')?.errors" >Niste uneli ispravnu email adresu.</p>
+      <input type="text" formControlName="password" [(ngModel)]="password" class="fadeIn third"  placeholder="Lozinka">
+      <p *ngIf="submitted && control('password')?.errors" >Niste uneli lozinku.</p>
+      <div *ngIf="authenticationFailed">
+        <p style="color: red;">Podaci koje ste uneli nisu tačni.</p>
+      </div>
+
       <input type="submit" (click)="login()" class="fadeIn fourth" value="Prijava">
     </form>
 
-    <!-- Remind Passowrd -->
+
     <div id="formFooter">
       <a class="underlineHover" (click)="registerRedirect()">Registracija</a>
     </div>
