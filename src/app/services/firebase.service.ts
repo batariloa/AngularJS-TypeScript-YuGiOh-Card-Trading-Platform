@@ -14,166 +14,156 @@ import { identifierName } from '@angular/compiler';
   providedIn: 'root'
 })
 export class FirebaseService {
-isLoggedIn = false;
-oglasi:Observable<any[]> = new Observable;
-transakcije:Observable<any[]> = new Observable;
-user: Observable<any> = new Observable
-
-  constructor(public firebaseAuth:AngularFireAuth, public firestore:AngularFirestore, private firebase:AngularFireDatabase, private session:SessionServiceService) {
-   
+  isLoggedIn = false;
+  oglasi: Observable<any[]> = new Observable;
+  transakcije: Observable<any[]> = new Observable;
+  user: Observable<any> = new Observable
 
 
-   }
+  constructor(public firebaseAuth: AngularFireAuth, public firestore: AngularFirestore, private firebase: AngularFireDatabase, private session: SessionServiceService) {
 
 
-   async singin(email:string, password:string){
-let userid;
-    await this.firebaseAuth.signInWithEmailAndPassword(email,password).then(
-      async res=>{
-        
-        userid=res.user?.uid;
 
+  }
+
+
+  async signin(email: string, password: string) {
+    let userid;
+    await this.firebaseAuth.signInWithEmailAndPassword(email, password).then(
+      async res => {
+
+        userid = res.user?.uid;
+        sessionStorage.setItem('login', "true");
+        sessionStorage.setItem('user', res.user?.uid!);
+
+        this.firestore.collection('users').doc(res.user?.uid).get().subscribe((val: any) => {
       
-      sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
-      sessionStorage.setItem('login', "true");
-     sessionStorage.setItem('user', res.user?.uid! );
-   
-      this.firestore.collection('users').doc(res.user?.uid).get().subscribe((val:any)=>{
-        sessionStorage.setItem('username', val.data().displayName)
-        console.log(val.data().displayName)
-    
-      })
-    
-            
-        
+          sessionStorage.setItem('username', val.data().displayName)
+       
+
+        })
+
 
       }
-
     )
+  }
 
-   }
+  async signup(email: string, password: string, username: string) {
 
-   async signup(email:string, password:string, username:string){
-    
-    await this.firebaseAuth.createUserWithEmailAndPassword(email,password).then(
+    await this.firebaseAuth.createUserWithEmailAndPassword(email, password).then(
 
-     res=>{
-    
-      sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
-      sessionStorage.setItem('login','true');
-      return this.firestore.collection('users').doc(res.user?.uid).set({
-         displayName: username,
-         
-       })
-      
-        this.isLoggedIn = true;
-        localStorage.setItem('user', JSON.stringify(res.user))
-        
-        
+      res => {
+
+        sessionStorage.setItem('id', JSON.stringify(res.user?.uid));
+        sessionStorage.setItem('login', 'true');
+        return this.firestore.collection('users').doc(res.user?.uid).set({
+          displayName: username,
+
+        })
+
+
       }
     )
 
 
-    
+
     {
-      
-    }
-   }
 
-   async addOglas(proizvod:Proizvod){
-    
+    }
+  }
+
+  async addOglas(proizvod: Proizvod) {
+
     await this.firestore.collection('oglasi').add({
       cardid: proizvod.cardid,
-      user:sessionStorage.getItem('user'),
-      stanje:proizvod.stanje,
+      user: sessionStorage.getItem('user'),
+      stanje: proizvod.stanje,
       price: proizvod.price,
       quantity: proizvod.quantity,
       set: proizvod.set,
-      visible:'true'
-     
-   
+      visible: 'true'
+
+
     })
 
 
-    
 
-   }
 
-   async getAllOglasi(){
-   
-   this.oglasi = this.firestore.collection('oglasi').valueChanges( {
-     idField:'id'
-   }  );
-
-   console.log("gotov servis " )
-   return this.oglasi;
-
- 
   }
-  async getMyOglasi(){
-   
+
+  async getAllOglasi() {
+
+    this.oglasi = this.firestore.collection('oglasi').valueChanges({
+      idField: 'id'
+    });
+
+    console.log("gotov servis ")
+    return this.oglasi;
+
+
+  }
+  async getMyOglasi() {
+
     this.oglasi = this.firestore.collection('oglasi').valueChanges();
     return this.oglasi;
- 
-  
-   } 
 
-    
-   async getTransakcije(){
+
+  }
+
+
+  async getTransakcije() {
     this.transakcije = this.firestore.collection('transactions').valueChanges();
     return this.transakcije;
- 
-  
-   } 
 
-    
 
-   checkout(items:Proizvod[], info:OrderInfo){
-     items.forEach(element=>
-      {
-        this.dodajTransakciju(element, info);
-        this.firestore.collection("oglasi").doc(element.id).update({quantity: element.quantity-element.count});
-      })
-   
-   }
-   
-dodajTransakciju(item:Proizvod, info:OrderInfo){
-  
-this.firestore.collection('transactions').add({
- 
-  street: info.street,
-  street2:info.street2,
-  zip:info.zip,
-  city:info.city,
-  state: info.state,
-  paymentType : info.paymentType,
-  buyerId: sessionStorage.getItem('user'),
-  sellerId: item.user,
-  quantity: item.count,
-  cardid: item.karta.id,
-  oglasId: item.id
+  }
 
-})
 
-}
+  checkout(items: Proizvod[], info: OrderInfo) {
+    items.forEach(element => {
+      this.dodajTransakciju(element, info);
+      this.firestore.collection("oglasi").doc(element.id).update({ quantity: element.quantity - element.count });
+    })
 
-  obrisiOglas(proizvod:Proizvod){
+  }
+
+  dodajTransakciju(item: Proizvod, info: OrderInfo) {
+
+    this.firestore.collection('transactions').add({
+
+      street: info.street,
+      street2: info.street2,
+      zip: info.zip,
+      city: info.city,
+      state: info.state,
+      paymentType: info.paymentType,
+      buyerId: sessionStorage.getItem('user'),
+      sellerId: item.user,
+      quantity: item.count,
+      cardid: item.karta.id,
+      oglasId: item.id
+
+    })
+
+  }
+
+  obrisiOglas(proizvod: Proizvod) {
     this.firestore.collection('oglasi').doc(proizvod.id).set({
-     visible: 'false'
+      visible: 'false'
     })
   }
 
-  findUsername(id:string){
+  findUsername(id: string) {
     return this.firestore.collection('users').doc(id).valueChanges();
-  
+
   }
 
-   logout(){
-     this.firebaseAuth.signOut();
-     sessionStorage.setItem('login', "false");
-   }
+  logout() {
+    this.firebaseAuth.signOut();
+    sessionStorage.setItem('login', "false");
+  }
 
 
 
-   
+
 }

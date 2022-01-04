@@ -27,25 +27,25 @@ export class FeedComponent implements OnInit {
   public catchProizvod:Proizvod={} as Proizvod;
   prikaziDetalje = false;
   prikaziFormu = false;
-  
+  userID:string = ""
 input:string = "";
 
 
 
-  constructor(private route:ActivatedRoute, public router:Router, private api:ApiService, private store:Store<AppState>, private firebaseService:FirebaseService, private session:SessionServiceService) 
+
+  constructor(private route:ActivatedRoute, public router:Router, private api:ApiService, private store:Store<AppState>, 
+    private firebaseService:FirebaseService) 
   {
-    
-    
 
    }
 
   ngOnInit(): void {
 
     this.oglasiData$ = of(this.oglasiData);
-
+    this.userID = sessionStorage.getItem('user')!;
 
   this.nadjiOglase()
-    
+  
     
   }
 
@@ -75,21 +75,14 @@ input:string = "";
    
 }
 
-async nadjiKartu(oglas:any){
+async nadjiKartu(oglas:Proizvod){
   
  (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
    
-
-
-  
-
       oglas.karta = res.data[0]
       oglas.count = 1;
-    
-      this.tempData.push(oglas)
-   
-          
- 
+    if(oglas.user != this.userID)
+      this.tempData.push(oglas);
 
       });
   
@@ -117,7 +110,7 @@ showForm(){
 
 zatvoriPreview($event:any){
   this.prikaziDetalje= false;
-  console.log("aktiviran")
+
 }
 }
 

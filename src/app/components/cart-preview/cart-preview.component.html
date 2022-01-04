@@ -9,7 +9,7 @@
 
 >
 <p *ngIf="cartItems.length==0 " style="color:white">Korpa je prazna.</p>
-<div class="row" style="background-color: white;" *ngFor="let item of cart |async">
+<div class="row" *ngFor="let item of cart |async">
 
 
     <div class="col-sm my-auto">

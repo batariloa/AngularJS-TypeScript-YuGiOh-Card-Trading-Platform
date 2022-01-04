@@ -8,8 +8,9 @@
        
          <div class="col">
             <label for="formGroupExampleInput">Ime karte</label>
-            <input type="text"  class="form-control"
+            <input type="text"  class="form-control" 
             placeholder="Unesi ime karte.."
+            [(ngModel)]="input"
             [formControl]="control" 
             [matAutocomplete]="auto"
            >
@@ -36,7 +37,7 @@
     
           <div class="col">
             <label for="formGroupExampleInput">Set</label>
-            <select 
+            <select  style="height: 33px;"
         (change)="promeniSet($event.target)"
             name="broj"  class="form-control" id="formGroupExampleInput" [value]="oglasDodaj.set" >
             
@@ -55,10 +56,10 @@
             </div>
           </div>
     
-    
+
           <div class="col">
             <label for="formGroupExampleInput2">Stanje karte</label>
-            <select [(ngModel)]="oglasDodaj.stanje"
+            <select [(ngModel)]="oglasDodaj.stanje"  style="height: 33px;"
             formControlName="brojSobe"  
             name="broj"  class="form-control" id="formGroupExampleInput" >
             

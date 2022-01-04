@@ -39,7 +39,7 @@ export class KartaPreviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("unutar " + this.oglas.karta.name)
+ 
       
   
   }
@@ -49,7 +49,6 @@ export class KartaPreviewComponent implements OnInit {
     
     dodajUKorpu(){
 
-      console.log(this.oglas.count + " dd")
       this.store.dispatch(CartActions.AddToCart(this.oglas))
 
       

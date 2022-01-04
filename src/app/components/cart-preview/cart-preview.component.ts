@@ -30,8 +30,7 @@ export class CartPreviewComponent implements OnInit {
   
     this.cart.subscribe(val =>
       {
-      
-     console.log(this.cartItems)
+
       })
 
      

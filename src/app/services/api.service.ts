@@ -17,13 +17,5 @@ export class ApiService {
       return this.http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?staple=yes');
     }
 
-    getOglasi(){
-      return this.http.get("assets/json/oglasi.json/");
-    }
-    getOglas(id:number){
-      return this.http.get("assets/json/oglasi.json/oglasi?id=3")
-    }
-    getUser(){
-      return this.http.get("assets/json/users.json/")
-    }
+
 }

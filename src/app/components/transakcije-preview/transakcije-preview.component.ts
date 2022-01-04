@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -10,8 +10,8 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './transakcije-preview.component.html',
   styleUrls: ['./transakcije-preview.component.css']
 })
-export class TransakcijePreviewComponent implements OnInit, OnChanges {
-
+export class TransakcijePreviewComponent implements OnInit {
+  @Output() eventClose:EventEmitter<any> = new EventEmitter;
   constructor(private firebase:FirebaseService) { }
 
   @Input() transakcije:OrderInfo[] = [];
@@ -22,8 +22,8 @@ export class TransakcijePreviewComponent implements OnInit, OnChanges {
     
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-      console.log("promena podataka " + this.transakcije)
-  }
 
+  close(){
+    this.eventClose.emit(true);
+  }
 }

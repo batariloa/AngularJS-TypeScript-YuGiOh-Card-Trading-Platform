@@ -26,6 +26,7 @@ export class AddOglasComponent implements OnInit {
   kartaImgUrl = "https://i.imgur.com/UjbK2Wb.png";
   filtriraneKarte:Karta[] = [];
   setovi:card_sets[] = [];
+  input:string = ""
     karte$: Observable<Karta[]> = new Observable;
   constructor(private formBuilder: FormBuilder, private yuguiohService: ApiService, private fireService: FirebaseService) {
    
@@ -63,11 +64,10 @@ export class AddOglasComponent implements OnInit {
 
     this.yuguiohService.getAllCards().subscribe( (val:any) =>{
       this.karte = val.data;
-      console.log("blombo")
-      console.log(val)
+   
       this.karte$= this.control.valueChanges
       .pipe(
-        startWith(''),
+        startWith(this.input),
         map(ime => ime ? this.filterCards(ime) : this.karte.slice())
       );
     

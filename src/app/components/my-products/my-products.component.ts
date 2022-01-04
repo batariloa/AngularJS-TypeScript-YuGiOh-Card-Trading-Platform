@@ -111,6 +111,10 @@ console.log("evo su " + this.transakcije[0])
    this.firebase.obrisiOglas(item);
  }
  
+ zatvoriTransakcije($event:any){
+   this.prikaziTransakcije=false;
+
+ }
  
 }
 

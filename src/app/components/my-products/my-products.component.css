@@ -8,7 +8,8 @@ img {
 
 .container {
     width:760px; 
-    margin-top: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .row{
     margin-bottom: 7px;
@@ -39,21 +40,7 @@ div {
     margin-bottom: 10px;
 }
 
-.cart_button_clear {
-    display: inline-block;
-    border: none;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 48px;
-    color: rgba(0, 0, 0, 0.5);
-    background: #FFFFFF;
-    border: solid 1px #b2b2b2;
-    padding-left: 35px;
-    padding-right: 35px;
-    outline: none;
-    cursor: pointer;
-    margin-right: 26px
-}
+
 
 .cart_button_clear:hover {
     border-color: #0e8ce4;
@@ -62,6 +49,7 @@ div {
 .nazad {
     display: inline-block;
     border: none;
+    margin-bottom: 20px;
     font-size: 18px;
     font-weight: 400;
     line-height: 48px;

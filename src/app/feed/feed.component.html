@@ -41,7 +41,7 @@ class="row"
  style=" margin: 0 auto;  margin-top: 20px;" class="container " 
   > 
 <ng-container  *ngFor="let item of oglasiData | searchFilter: input "  >
-    <div *ngIf="item.quantity>0 && item.visible=='true'" 
+    <div *ngIf="item.quantity>0 && item.visible=='true' && item.user " 
       class="col-md-4 " style="margin-bottom: 10px;"
       
     > 
