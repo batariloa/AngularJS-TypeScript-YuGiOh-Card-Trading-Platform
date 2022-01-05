@@ -72,14 +72,8 @@ export class AddOglasComponent implements OnInit {
       );
     
     }
- 
 
   )
-
- 
-  
-
-
 
 }
 private filterCards(name:string){
@@ -90,10 +84,6 @@ private filterCards(name:string){
 
 dodajOglas(){
   this.oglasDodaj.cardid = this.izabranaKartaId;
-
-  
-  
-
   this.fireService.addOglas(this.oglasDodaj);
      
 }

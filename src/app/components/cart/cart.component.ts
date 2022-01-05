@@ -33,8 +33,6 @@ export class CartComponent implements OnInit {
       
   }
 
-
-
   obrisIzKorpe(item:Proizvod){
     this.store.dispatch(DeleteFromCart(item))
   }

@@ -32,6 +32,7 @@ import { MyProductsComponent } from './components/my-products/my-products.compon
 import { SessionServiceService } from './services/session-service.service';
 import { LoginGuardService } from './services/login-guard.service';
 import { TransakcijePreviewComponent } from './components/transakcije-preview/transakcije-preview.component';
+import { MojePorudzbineComponent } from './components/moje-porudzbine/moje-porudzbine.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { TransakcijePreviewComponent } from './components/transakcije-preview/tr
     UspesnoPlacanjeComponent,
     LoginComponent,
     RegisterComponent,
-    AddOglasComponent,  SearchFilterPipe, MyProductsComponent, TransakcijePreviewComponent
+    AddOglasComponent,  SearchFilterPipe, MyProductsComponent, TransakcijePreviewComponent, MojePorudzbineComponent
 
   ],
   imports: [

@@ -18,6 +18,7 @@ export class FirebaseService {
   oglasi: Observable<any[]> = new Observable;
   transakcije: Observable<any[]> = new Observable;
   user: Observable<any> = new Observable
+  oglas:Observable<any> = new Observable;
 
 
   constructor(public firebaseAuth: AngularFireAuth, public firestore: AngularFirestore, private firebase: AngularFireDatabase, private session: SessionServiceService) {
@@ -145,6 +146,14 @@ export class FirebaseService {
 
     })
 
+  }
+
+  getSpecificOglas(oglasId:string):any{
+   this.oglas =  this.firestore.collection('oglasi').doc(oglasId).valueChanges()
+     
+     
+     return this.oglas;
+   
   }
 
   obrisiOglas(proizvod: Proizvod) {

@@ -9,7 +9,7 @@ export interface ICart {
 }
 export class Proizvod {
     id: string = "";
-
+    idField:string ='';
     name: string = "";
     count: number = 0;
     quantity:number = 0;

@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script src="https://kit.fontawesome.com/ca9af8d80b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<app-navbar></app-navbar>
+<div class='container'>
+    <h3 >Istorija porduzbina</h3>
+    <div class="card justify-content-center" >
+        <div *ngIf="mojiOglasi.length==0"  class="row justify-content-center"> 
+            <p style="font-weight: 400;">Nemate nijedan aktivan oglas.</p>
+        </div>
+      
+        <div *ngIf="mojiOglasi.length!=0" class ="row justify-content-center" style="margin-top: 10px;">
+        <div class="imgDiv col-sm">
+           <b></b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Ime</b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Set</b>
+        </div>
+      
+        <div class="col-sm my-auto ">
+            <b>Cena</b>
+        </div>
+        <div class="col-sm my-auto">
+            <b>Na stanju</b>
+         </div>
+         <div class="col-sm my-auto">
+          
+        </div>
+        <div class="col-sm my-auto">
+          
+        </div>
+       
+        </div>
+<br>
+
+<div *ngFor="let item of mojiOglasi" class ="row  justify-content-center">
+<div class=" " >
+    <img [src]="item.karta.card_images[0].image_url"> 
+</div>
+<div class="col ">
+    {{item.karta.name}}
+</div>
+<div class="col ">
+    {{item.karta.name}}
+</div>
+<div class="col ">
+   
+    {{item.price}} RSD
+</div>
+<div class="col">
+    {{item.quantity}}
+</div>
+
+<div class="col-sm ">
+
+    <button  class="btn btn-success btn-sm"><i style="font-size:20px;" class="fa fa-angle-double-right" aria-hidden="true"></i></button>	</div>
+ 
+</div>
+<div class="dugme_nazad"> 
+    <button [routerLink]="['/feed']" type="button" class="button nazad">Nazad</button> </div>
+</div>
+<div  class ="row justify-content-center ">
+
+  
+    </div>
+  
+
+
+
+</div><app-transakcije-preview  (eventClose)="zatvoriTransakcije($event)"  *ngIf="prikaziTransakcije" [transakcije]="transakcije" style="position: fixed; width:100%; height:80%; top:120px; ">
+
+</app-transakcije-preview>

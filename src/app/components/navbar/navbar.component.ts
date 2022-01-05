@@ -22,7 +22,8 @@ export class NavbarComponent implements OnInit, OnChanges {
   countProizvod$: Observable<number>;
   sumProizvod$: Observable<number>;
   showCart: boolean = false;
-username:any;
+  username$:Observable<string> = new Observable;
+  username: string = "";
 
   @Output() logoutEmit: EventEmitter<boolean> = new EventEmitter();
 
@@ -31,13 +32,13 @@ username:any;
   constructor( private store:Store<AppState>, private serviceLogin: FirebaseService, private serviceAcc: AngularFirestore, private session:SessionServiceService) { 
     this.countProizvod$ = store.select(selectCountProducts);
     this.sumProizvod$ = store.select(selectPriceKorpa);
-    console.log(this.countProizvod$)
-    
    
   }
 
   ngOnInit(): void {
- this.username = sessionStorage.getItem('username')
+    this.username$ = of(this.username);
+ this.username = sessionStorage.getItem('username')!;
+
 
  
   

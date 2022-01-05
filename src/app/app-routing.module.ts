@@ -5,6 +5,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { KartaPreviewComponent } from './components/karta-preview/karta-preview.component';
 import { LoginComponent } from './components/login/login.component';
+import { MojePorudzbineComponent } from './components/moje-porudzbine/moje-porudzbine.component';
 import { MyProductsComponent } from './components/my-products/my-products.component';
 import { ProductPreviewComponent } from './components/product-preview/product-preview.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path: 'cartPreview', component: CartPreviewComponent },
   { path: 'karta', component: KartaPreviewComponent },
   { path: 'karta/:id', component: KartaPreviewComponent },
+
+  { path: 'porudzbine', component: MojePorudzbineComponent },
 
  
   
