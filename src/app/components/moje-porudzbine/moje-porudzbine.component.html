@@ -17,26 +17,26 @@
         </div>
       
         <div *ngIf="mojiOglasi.length!=0" class ="row justify-content-center" style="margin-top: 10px;">
-        <div class="imgDiv col-sm">
+        <div class="imgDiv col">
            <b></b>
         </div>
-        <div class="col-sm my-auto">
+        <div class="col">
             <b>Ime</b>
         </div>
-        <div class="col-sm my-auto">
+        <div class="col">
             <b>Set</b>
         </div>
       
-        <div class="col-sm my-auto ">
+        <div class="col ">
             <b>Cena</b>
         </div>
-        <div class="col-sm my-auto">
-            <b>Na stanju</b>
+        <div class="col">
+            <b>Kolicina</b>
          </div>
-         <div class="col-sm my-auto">
-          
+         <div class="col">
+            <b>Prodavac</b>
         </div>
-        <div class="col-sm my-auto">
+        <div class="col">
           
         </div>
        
@@ -58,12 +58,15 @@
     {{item.price}} RSD
 </div>
 <div class="col">
-    {{item.quantity}}
+    {{item.count}}
+   </div>
+<div class="col">
+ {{item.username}}
 </div>
 
 <div class="col-sm ">
 
-    <button  class="btn btn-success btn-sm"><i style="font-size:20px;" class="fa fa-angle-double-right" aria-hidden="true"></i></button>	</div>
+    <button (click)="displayProductPreview(item)" class="btn btn-success btn-sm"><i style="font-size:20px;" class="fa fa-angle-double-right" aria-hidden="true"></i></button>	</div>
  
 </div>
 <div class="dugme_nazad"> 
@@ -77,6 +80,10 @@
 
 
 
-</div><app-transakcije-preview  (eventClose)="zatvoriTransakcije($event)"  *ngIf="prikaziTransakcije" [transakcije]="transakcije" style="position: fixed; width:100%; height:80%; top:120px; ">
-
-</app-transakcije-preview>
+</div><div
+ 
+*ngIf="prikaziDetalje"
+style=" height: 100%; right: 5px; position: fixed; top: 50px;"
+>
+<app-product-preview [proizvod]="catchProizvod" (eventClose)="zatvoriPreview($event)" ></app-product-preview>
+</div>

@@ -19,7 +19,8 @@ export class Proizvod {
     cardid:number = 0;
     set: string = "";
     stanje: string = "";
-    visible:string = "false"
+    visible:string = "false";
+    username:string = '';
   
    
 

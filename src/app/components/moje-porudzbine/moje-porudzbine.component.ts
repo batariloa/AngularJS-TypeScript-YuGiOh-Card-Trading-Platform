@@ -20,11 +20,10 @@ export class MojePorudzbineComponent implements OnInit {
   transakcije:OrderInfo[] = [];
   transakcije$:Observable<OrderInfo[]> = new Observable();
 
-  transakcijeIzabrane:OrderInfo[] = [];
-  user: string = "";
-  prikaziTransakcije = false;
-  odabranaTransakcija = "";
+  
+  prikaziDetalje = false;
 
+  public catchProizvod:Proizvod={} as Proizvod;
 
   constructor(private router:Router, private session:SessionServiceService, private firebase: FirebaseService, private api:ApiService) { }
 
@@ -89,13 +88,11 @@ export class MojePorudzbineComponent implements OnInit {
  
        oglas.karta = res.data[0]
        oglas.count = 1;
+       
        val.push(oglas)
            
-       console.log("Posle dodavanja" + val[0].cardid);
+       
       })
- 
-         console.log("posle dodavanaja 2 "  + this.mojiOglasi.length)
-         console.log(oglas)
       
     
        });
@@ -104,9 +101,14 @@ export class MojePorudzbineComponent implements OnInit {
 
  
  
- zatvoriTransakcije($event:any){
-   this.prikaziTransakcije=false;
+ zatvoriPreview($event:any){
+   this.prikaziDetalje=false;
 
+ }
+ displayProductPreview($event:Proizvod) {
+  this.catchProizvod = $event;
+  this.prikaziDetalje=true;
+  
  }
  
 

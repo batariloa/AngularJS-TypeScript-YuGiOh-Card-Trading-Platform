@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './product-preview.component.html',
   styleUrls: ['./product-preview.component.css']
 })
-export class ProductPreviewComponent implements OnInit, OnChanges {
+export class ProductPreviewComponent implements OnInit {
 
   public proizvod$:Observable<Proizvod> = new Observable;
   @Input() proizvod:Proizvod = {} as Proizvod
@@ -25,14 +25,10 @@ export class ProductPreviewComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-this.findUsername()
-    
+
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-      this.findUsername()
-  }
-
+ 
 close(){
   this.eventClose.emit(true)
 }
@@ -45,12 +41,5 @@ dodajUKorpu(){
   
 }
 
-findUsername(){
-  console.log(this.proizvod.user)
-  this.firebase.findUsername(this.proizvod.user).subscribe((val:any)=>
-    {
-      this.username = val.displayName
-      console.log("username je : "+ val.data)
-    })
-}
+
 }

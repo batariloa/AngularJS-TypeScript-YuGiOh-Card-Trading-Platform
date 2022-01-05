@@ -82,7 +82,8 @@ export class FirebaseService {
       price: proizvod.price,
       quantity: proizvod.quantity,
       set: proizvod.set,
-      visible: 'true'
+      visible: 'true',
+      username: proizvod.username
 
 
     })
