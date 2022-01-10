@@ -9,7 +9,7 @@
          <div class="col">
             <label for="formGroupExampleInput">Ime karte</label>
             <input type="text"  class="form-control" 
-            placeholder="Unesi ime karte.."
+            placeholder="Unesite ime karte.."
             [(ngModel)]="input"
             [formControl]="control" 
             [matAutocomplete]="auto"
@@ -86,7 +86,7 @@
             <input [(ngModel)]="oglasDodaj.price"
          
             formControlName="city" 
-            name="broj" type="number" class="form-control" id="formGroupExampleInput" placeholder="Beograd">
+            name="broj" type="number" class="form-control" id="formGroupExampleInput" placeholder="1000">
             <div *ngIf="" class="invalid-feedback">
               <div *ngIf="">Grad je obavezan</div>
               <div *ngIf="">
@@ -102,7 +102,7 @@
             <input  
             [(ngModel)]="oglasDodaj.quantity"
             formControlName="cenaPoNoci" 
-            type="number"  name="street"  class="form-control" id="formGroupExampleInput2" placeholder="4000">
+            type="number"  name="street"  class="form-control" id="formGroupExampleInput2" placeholder="1">
             <div *ngIf="" class="invalid-feedback">
               <div *ngIf="">Cena je obavezna</div>
               <div *ngIf="">

@@ -36,16 +36,16 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.username$ = of(this.username);
- this.username = sessionStorage.getItem('username')!;
-
+ 
+    this.username = sessionStorage.getItem('username')!;
 
  
   
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      this.ngOnInit()
+    this.username = sessionStorage.getItem('username')!;
+      
   }
   prikaziKorpu(){
     if(this.showCart ==false){
