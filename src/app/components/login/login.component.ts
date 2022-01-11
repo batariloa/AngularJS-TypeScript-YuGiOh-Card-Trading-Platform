@@ -38,21 +38,31 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     if (this.forma.valid)
-      this.authenticationFailed = true
+    
 
     this.loginService.signin(this.username, this.password).then(
       () => {
+     
 
         if (sessionStorage.getItem('login') == "true") {
+          sessionStorage.setItem('username', this.username)
 
           this.router.navigate(['/feed'])
 
         }
-        else {
-
-        }
+    
       }
-    );
+    ).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if(errorCode = "auth/user-not-found"){
+     this.authenticationFailed=true;
+        
+      }
+      // ...
+   });
+
 
   }
 

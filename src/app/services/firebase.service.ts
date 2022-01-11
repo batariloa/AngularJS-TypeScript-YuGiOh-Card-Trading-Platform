@@ -33,12 +33,14 @@ export class FirebaseService {
     await this.firebaseAuth.signInWithEmailAndPassword(email, password).then(
       async res => {
 
+        
         userid = res.user?.uid;
         sessionStorage.setItem('login', "true");
         sessionStorage.setItem('user', res.user?.uid!);
 
         this.firestore.collection('users').doc(res.user?.uid).get().subscribe((val: any) => {
       
+
           sessionStorage.setItem('username', val.data().displayName)
        
 
