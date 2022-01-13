@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 import { ICart, Karta, Proizvod } from 'src/app/redux/cart.model';
 import { AddToCart, DeleteFromCart } from 'src/app/redux/cart.model.action';
 import { selectCart, selectPriceKorpa } from 'src/app/redux/cart.selectors';
@@ -18,7 +20,7 @@ export class CartComponent implements OnInit {
   sum$: Observable<Number>  = new Observable
   cartItems:any = [];
 
-  constructor(private store:Store) {
+  constructor(private store:Store, private router:Router) {
 
     this.cart$ = this.store.select(selectCart);
    }
@@ -40,5 +42,8 @@ export class CartComponent implements OnInit {
     this.store.dispatch(AddToCart(item))
   }
 
+  toCheckout(){
+    this.router.navigate([GlobalVariableURL.CHECKOUT_URL])
+  }
 
 }

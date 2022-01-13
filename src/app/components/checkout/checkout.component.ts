@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -73,17 +74,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   posaljiTransakciju(){
-    console.log("cart items trenutno " + this.cartItems[0])
+
     this.info.paymentType = this.transakcijaForma.get('tipPlacanja')!.value;
   this.info.street = this.transakcijaForma.get('ulica')!.value;
   this.info.street2 = this.transakcijaForma.get('ulica2')!.value;
   this.info.zip= this.transakcijaForma.get('zip')!.value;
   this.info.city = this.transakcijaForma.get('grad')!.value;
   this.info.state = this.transakcijaForma.get('drzava')!.value;
-  console.log("ulica je " +this.info.street!)
+
  
     this.firestore.checkout(this.cartItems, this.info)
-    this.router.navigate(['/success'], {queryParams: {id:2321532423}});
+    this.router.navigate([GlobalVariableURL.SUCCESS_URL], {queryParams: {id:2321532423}});
   
   }
 

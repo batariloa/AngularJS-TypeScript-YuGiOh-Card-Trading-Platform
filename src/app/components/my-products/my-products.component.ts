@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 
 import { OrderInfo, Proizvod } from 'src/app/redux/cart.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -40,15 +41,14 @@ export class MyProductsComponent implements OnInit {
  }
 
  nazad(){
-   this.router.navigate(['/feed'])
+   this.router.navigate([GlobalVariableURL.FEED_URL])
  }
 
  async ucitajOglase(){
    (await this.firebase.getAllOglasi()).subscribe((val:any) => {
     
     val.forEach((element:any) => {
-      console.log("provera " + element.user)
-    console.log("provera2" + this.user)
+    
       if(element.user == this.user && element.visible=='true')
       this.nadjiKartu(element)
    
@@ -84,7 +84,7 @@ export class MyProductsComponent implements OnInit {
 
  async displayTransactions(id:string){
 this.odabranaTransakcija = id;
-console.log("eo ga id " + id)
+
 this.prikaziTransakcije = true;
 await (await this.firebase.getTransakcije()).subscribe(val=>
   {
@@ -101,7 +101,7 @@ await (await this.firebase.getTransakcije()).subscribe(val=>
     })
     this.odabranaTransakcija = id;
 this.prikaziTransakcije = true;
-console.log("evo su " + this.transakcije[0])
+
   }
   );
 
@@ -114,6 +114,10 @@ console.log("evo su " + this.transakcije[0])
  zatvoriTransakcije($event:any){
    this.prikaziTransakcije=false;
 
+ }
+
+ toFeed(){
+   this.router.navigate([GlobalVariableURL.FEED_URL])
  }
  
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 import { OrderInfo, Proizvod } from 'src/app/redux/cart.model';
 import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -39,7 +40,7 @@ export class MojePorudzbineComponent implements OnInit {
  }
 
  nazad(){
-   this.router.navigate(['/feed'])
+   this.router.navigate([GlobalVariableURL.FEED_URL])
  }
 
  async getTransactions(){
@@ -48,8 +49,7 @@ export class MojePorudzbineComponent implements OnInit {
    {
      this.transakcije = []
      val.forEach(element=>{
-      
-         console.log("element je ovde " + element.oglasId)
+    
          this.ucitajOglas(element)
  
        
@@ -63,10 +63,10 @@ export class MojePorudzbineComponent implements OnInit {
  )}
 
  async ucitajOglas(transakcija:OrderInfo){
-   console.log("ucitan u metodu " + transakcija.oglasId);
+
    if(transakcija.oglasId!== undefined )
    (await this.firebase.getSpecificOglas(transakcija.oglasId)).subscribe((val:any) => {
-    console.log('subscired to ' + val.cardid)
+   
   if(val!==undefined)
       this.nadjiKartu(val)
    
@@ -77,7 +77,7 @@ export class MojePorudzbineComponent implements OnInit {
 
  nadjiKartu(oglas:any){
 
-  console.log(oglas.cardid + " blbl");
+
   (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
     
  
@@ -109,6 +109,9 @@ export class MojePorudzbineComponent implements OnInit {
   this.catchProizvod = $event;
   this.prikaziDetalje=true;
   
+ }
+ toFeed(){
+   this.router.navigate([GlobalVariableURL.FEED_URL])
  }
  
 

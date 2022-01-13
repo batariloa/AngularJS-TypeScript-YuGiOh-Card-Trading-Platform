@@ -12,6 +12,7 @@ import { Proizvod, User } from '../redux/cart.model';
 import { FirebaseService } from '../services/firebase.service';
 import { timingSafeEqual } from 'crypto';
 import { SessionServiceService } from '../services/session-service.service';
+import { GlobalVariableURL } from '../GlobalVariables';
 
 
 @Component({
@@ -50,7 +51,7 @@ input:string = "";
   }
 
   prikaziKartu(){
-    this.router.navigate(['card', {id: this.input}])  
+    this.router.navigate([GlobalVariableURL.CARD_URL, {id: this.input}])  
   }
   
 
@@ -96,7 +97,7 @@ displayProductPreview($event:Proizvod) {
 
 
 gotoHome(){
-  this.router.navigate(['/cart']);  // define your component where you want to go
+  this.router.navigate([GlobalVariableURL.CART_URL]);  // define your component where you want to go
 }
 
 showForm(){

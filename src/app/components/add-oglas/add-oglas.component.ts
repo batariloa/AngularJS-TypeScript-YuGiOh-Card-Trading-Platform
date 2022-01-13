@@ -105,6 +105,6 @@ promeniKartu(karta:Karta){
 
 promeniSet(set:any){
   this.oglasDodaj.set = set.value
-console.log("promena seta" + set.value)
+
 }
 }

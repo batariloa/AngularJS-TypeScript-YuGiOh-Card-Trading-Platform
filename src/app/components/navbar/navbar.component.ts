@@ -13,6 +13,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { SessionServiceService } from 'src/app/services/session-service.service';
 import { JsonpClientBackend } from '@angular/common/http';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import { Router } from '@angular/router';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -29,7 +32,8 @@ export class NavbarComponent implements OnInit, OnChanges {
 
 
 
-  constructor( private store:Store<AppState>, private serviceLogin: FirebaseService, private serviceAcc: AngularFirestore, private session:SessionServiceService) { 
+  constructor( private store:Store<AppState>, private serviceLogin: FirebaseService, private serviceAcc: AngularFirestore, private session:SessionServiceService,
+    private router:Router) { 
     this.countProizvod$ = store.select(selectCountProducts);
     this.sumProizvod$ = store.select(selectPriceKorpa);
    
@@ -61,6 +65,16 @@ logout(){
 
 }
 
+toPorudzbine(){
+  this.router.navigate([GlobalVariableURL.MY_ORDERS_URL])
+}
+
+toMyProducts(){
+  this.router.navigate([GlobalVariableURL.MY_PRODUCTS_URL])
+}
+toFeed(){
+  this.router.navigate([GlobalVariableURL.FEED_URL])
+}
 
 
 }

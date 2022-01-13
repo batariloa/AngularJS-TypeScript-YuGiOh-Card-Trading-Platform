@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionServiceService } from 'src/app/services/session-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
         if (sessionStorage.getItem('login') == "true") {
           sessionStorage.setItem('username', this.username)
 
-          this.router.navigate(['/feed'])
+          this.router.navigate([GlobalVariableURL.FEED_URL])
 
         }
     
@@ -67,7 +68,7 @@ export class LoginComponent implements OnInit {
   }
 
   registerRedirect() {
-    this.router.navigate(['/register'])
+    this.router.navigate([GlobalVariableURL.REGISTER_URL])
 
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GlobalVariableURL } from 'src/app/GlobalVariables';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -31,7 +32,7 @@ forma:FormGroup ;
     if(this.forma.valid){
 this.loginService.signup(this.email, this.password, this.username);
 
-this.router.navigate(['/feed'])
+this.router.navigate([GlobalVariableURL.FEED_URL])
 }
 
   }
@@ -39,4 +40,8 @@ this.router.navigate(['/feed'])
     console.log(this.forma.get(name)?.errors)
     return this.forma.get(name);
   }
+  toLogin(){
+    this.router.navigate([GlobalVariableURL.LOGIN_URL])
+  }
+  
 }

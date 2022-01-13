@@ -35,7 +35,7 @@ close(){
 
 dodajUKorpu(){
 
-  console.log(this.proizvod.count + " dd")
+  
   this.store.dispatch(CartActions.AddToCart(this.proizvod))
 
   
