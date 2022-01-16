@@ -42,6 +42,7 @@ export class MojePorudzbineComponent implements OnInit {
  }
 
  async getTransactions(){
+   this.transakcije = [];
 
   (await this.firebase.getTransakcije()).subscribe(val=>
    {
