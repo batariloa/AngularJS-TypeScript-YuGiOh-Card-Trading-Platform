@@ -45,6 +45,7 @@ export class MyProductsComponent implements OnInit {
  }
 
  async ucitajOglase(){
+   this.mojiOglasi = [];
    (await this.firebase.getAllOglasi()).subscribe((val:any) => {
     
     val.forEach((element:any) => {
