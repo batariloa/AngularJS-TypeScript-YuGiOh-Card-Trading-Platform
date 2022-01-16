@@ -33,11 +33,9 @@ export class MojePorudzbineComponent implements OnInit {
     this.mojiOglasi$ = of(this.mojiOglasi);
     this.getTransactions();
     this.transakcije$ = of(this.transakcije)
+    console.log("user je " + sessionStorage.getItem('user'))
   }
   
- obrisi(item:any){
-
- }
 
  nazad(){
    this.router.navigate([GlobalVariableURL.FEED_URL])
@@ -49,10 +47,11 @@ export class MojePorudzbineComponent implements OnInit {
    {
      this.transakcije = []
      val.forEach(element=>{
+       if(element.buyerId== sessionStorage.getItem('user')){
     
          this.ucitajOglas(element)
  
-       
+       }
        
     
      

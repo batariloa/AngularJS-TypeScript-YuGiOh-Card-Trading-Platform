@@ -15,11 +15,11 @@ export class TransakcijePreviewComponent implements OnInit {
   constructor(private firebase:FirebaseService) { }
 
   @Input() transakcije:OrderInfo[] = [];
-  currentTransakcije: OrderInfo[] = [];
+ 
   
   ngOnInit(): void {
   
-    
+    console.log("transakcija duzina je " + this.transakcije.length)
   }
 
 

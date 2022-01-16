@@ -42,8 +42,8 @@ input:string = "";
 
   ngOnInit(): void {
 
-    this.oglasiData$ = of(this.oglasiData);
-    this.userID = sessionStorage.getItem('user')!;
+   
+    
 
   this.nadjiOglase()
   
@@ -64,7 +64,7 @@ input:string = "";
     
       this.nadjiKartu(element)
    
-    });
+    })
     this.oglasiData = this.tempData
   
 
@@ -77,6 +77,7 @@ input:string = "";
 }
 
 async nadjiKartu(oglas:Proizvod){
+  if(oglas.cardid!=undefined){
   
  (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
    
@@ -86,6 +87,7 @@ async nadjiKartu(oglas:Proizvod){
       this.tempData.push(oglas);
 
       });
+    }
   
   }
 
