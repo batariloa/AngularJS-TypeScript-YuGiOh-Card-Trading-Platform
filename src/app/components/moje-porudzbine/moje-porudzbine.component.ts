@@ -29,7 +29,7 @@ export class MojePorudzbineComponent implements OnInit {
   constructor(private router:Router, private session:SessionServiceService, private firebase: FirebaseService, private api:ApiService) { }
 
   ngOnInit(): void {
-  
+    this.transakcije = [];
     this.mojiOglasi$ = of(this.mojiOglasi);
     this.getTransactions();
     this.transakcije$ = of(this.transakcije)
@@ -42,7 +42,7 @@ export class MojePorudzbineComponent implements OnInit {
  }
 
  async getTransactions(){
-   this.transakcije = [];
+  
 
   (await this.firebase.getTransakcije()).subscribe(val=>
    {

@@ -50,9 +50,9 @@ export class MyProductsComponent implements OnInit {
     
     val.forEach((element:any) => {
     
-      if(element.user == this.user && element.visible=='true')
+      if(element.user == sessionStorage.getItem('user') && element.visible=='true'){
       this.nadjiKartu(element)
-   
+      }
     });
 
   })
