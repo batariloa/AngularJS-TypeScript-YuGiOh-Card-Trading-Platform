@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, Subscription } from 'rxjs';
 import { KartaPreviewComponent } from '../components/karta-preview/karta-preview.component';
 import { ApiService } from 'src/app/services/api.service';
 import { AppState } from '../models/app.state';
@@ -27,6 +27,7 @@ export class FeedComponent implements OnInit {
   public userData:User[] = [];
   public catchProizvod:Proizvod={} as Proizvod;
   prikaziDetalje = false;
+  sub:Subscription = new Subscription;
   prikaziFormu = false;
   userID:string = ""
 input:string = "";
@@ -56,7 +57,7 @@ input:string = "";
   
 
    async nadjiOglase(){
-   (await this.firebaseService.getAllOglasi()).subscribe((val:any) => {
+    this.sub = (await this.firebaseService.getAllOglasi()).subscribe((val:any) => {
      this.tempData = [];
     
     val.forEach((element:any) => {
@@ -66,6 +67,7 @@ input:string = "";
    
     })
     this.oglasiData = this.tempData
+    this.sub.unsubscribe
   
 
  
