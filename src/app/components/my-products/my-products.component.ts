@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { GlobalVariableURL } from 'src/app/GlobalVariables';
 
 import { OrderInfo, Proizvod } from 'src/app/redux/cart.model';
@@ -24,60 +24,59 @@ export class MyProductsComponent implements OnInit {
   user: string = "";
   prikaziTransakcije = false;
   odabranaTransakcija = "";
-
+sub:Subscription = new Subscription;
 
   constructor(private router:Router, private session:SessionServiceService, private firebase: FirebaseService, private api:ApiService) { }
 
   ngOnInit(): void {
     this.user = sessionStorage.getItem('user')!
     console.log(this.user)
+    if(this.mojiOglasi.length==0){}
+
     this.mojiOglasi$ = of(this.mojiOglasi);
+    
     this.ucitajOglase();
-    this.transakcije$ = of(this.transakcije)
+  
   }
   
- obrisi(item:any){
 
- }
 
  nazad(){
    this.router.navigate([GlobalVariableURL.FEED_URL])
  }
 
  async ucitajOglase(){
-   this.mojiOglasi = [];
-   (await this.firebase.getAllOglasi()).subscribe((val:any) => {
-    
+  
+  this.sub = (await this.firebase.getAllOglasi()).subscribe((val:any) => {
+  
     val.forEach((element:any) => {
     
-      if(element.user == sessionStorage.getItem('user') && element.visible=='true'){
+      if(element.user == this.user && element.visible=='true'){
       this.nadjiKartu(element)
       }
     });
+    this.sub.unsubscribe()
 
   })
 }
 
  nadjiKartu(oglas:any){
 
-  console.log(oglas.cardid + " blbl");
+ 
   (this.api.getCards(oglas.cardid))!.subscribe((res:any)=>{
     
  
  
-      this.mojiOglasi$.subscribe(val =>{
+     
 
        
  
        oglas.karta = res.data[0]
        oglas.count = 1;
-       val.push(oglas)
+       this.mojiOglasi.push(oglas)
            
-       console.log("Posle dodavanja" + val[0].cardid);
-      })
+   
  
-         console.log("posle dodavanaja 2 "  + this.mojiOglasi.length)
-         console.log(oglas)
       
     
        });
@@ -87,13 +86,14 @@ export class MyProductsComponent implements OnInit {
 this.odabranaTransakcija = id;
 
 this.prikaziTransakcije = true;
-await (await this.firebase.getTransakcije()).subscribe(val=>
+(await this.firebase.getTransakcije()).subscribe(val=>
   {
-    this.transakcije = []
+ 
+   
     val.forEach(element=>{
-      console.log(element.oglasId)
+     
 
-      if(element.oglasId == id ){
+      if(element.oglasId == id  && element.visible=='true'){
         
         this.transakcije.push(element)
 
@@ -108,8 +108,12 @@ this.prikaziTransakcije = true;
 
 
  }
- obrisiOglas(item:any){
-   this.firebase.obrisiOglas(item);
+ async obrisiOglas(item:any){
+   
+  (await  this.firebase.obrisiOglas(item));
+ this.mojiOglasi.forEach((element,index)=>{
+    if(element==item) this.mojiOglasi.splice(index,1);
+ });
  }
  
  zatvoriTransakcije($event:any){
