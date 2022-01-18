@@ -29,10 +29,7 @@ export class CartPreviewComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.cart.subscribe(val =>
-      {
-
-      })
+   
 
      
   }

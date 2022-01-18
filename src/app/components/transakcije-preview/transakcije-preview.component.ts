@@ -19,7 +19,7 @@ export class TransakcijePreviewComponent implements OnInit {
   
   ngOnInit(): void {
   
-    console.log("transakcija duzina je " + this.transakcije.length)
+    
   }
 
 

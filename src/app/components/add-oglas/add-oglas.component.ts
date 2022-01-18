@@ -85,7 +85,7 @@ private filterCards(name:string){
 dodajOglas(){
   this.oglasDodaj.cardid = this.izabranaKartaId;
   this.oglasDodaj.username = sessionStorage.getItem('username')!;
-  console.log("Username je " + this.oglasDodaj.username)
+  
   this.fireService.addOglas(this.oglasDodaj);
      
 }
