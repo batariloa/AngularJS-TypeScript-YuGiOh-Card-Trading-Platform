@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
      
 
         if (sessionStorage.getItem('login') == "true") {
-          sessionStorage.setItem('username', this.username)
+       
 
           this.router.navigate([GlobalVariableURL.FEED_URL])
 

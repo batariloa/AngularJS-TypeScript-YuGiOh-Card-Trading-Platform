@@ -32,10 +32,11 @@ sub:Subscription = new Subscription;
     this.user = sessionStorage.getItem('user')!
     console.log(this.user)
     if(this.mojiOglasi.length==0){}
-
+    this.getTransactions();
     this.mojiOglasi$ = of(this.mojiOglasi);
     
     this.ucitajOglase();
+    
   
   }
   
@@ -81,33 +82,68 @@ sub:Subscription = new Subscription;
     
        });
  }
+ async getTransactions(){
 
- async displayTransactions(id:string){
-this.odabranaTransakcija = id;
-
-this.prikaziTransakcije = true;
-(await this.firebase.getTransakcije()).subscribe(val=>
-  {
+  (await this.firebase.getTransakcije()).subscribe(val=>
+   {
+     this.transakcije = []
+     val.forEach(element=>{
+       if(element.buyerId== sessionStorage.getItem('user')){
+    
+         this.ucitajOglas(element)
  
-   
-    val.forEach(element=>{
+       }
+       
+    
      
+   }
+   );
+   }
+   
+ )}
+ async ucitajOglas(transakcija:OrderInfo){
 
-      if(element.oglasId == id  && element.visible=='true'){
+  if(transakcija.oglasId!== undefined )
+  (await this.firebase.getSpecificOglas(transakcija.oglasId)).subscribe((val:any) => {
+  
+ if(val!==undefined)
+     this.nadjiKartu(val)
+  
+  
+
+ })
+}
+
+
+async displayTransactions(id:string){
+  this.odabranaTransakcija = id;
+  console.log("eo ga id " + id)
+  this.prikaziTransakcije = true;
+  await (await this.firebase.getTransakcije()).subscribe(val=>
+    {
+      this.transakcije = []
+      val.forEach(element=>{
+     
+  
+        if(element.oglasId == id ){
+          
+          this.transakcije.push(element)
+  
+        }
         
-        this.transakcije.push(element)
+      })
+      this.odabranaTransakcija = id;
+  this.prikaziTransakcije = true;
+ 
+    }
+    );
+  
+  
+   }
 
-      }
-      
-    })
-    this.odabranaTransakcija = id;
-this.prikaziTransakcije = true;
-
-  }
-  );
 
 
- }
+ 
  async obrisiOglas(item:any){
    
   (await  this.firebase.obrisiOglas(item));

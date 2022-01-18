@@ -42,6 +42,7 @@ input:string = "";
    }
 
   ngOnInit(): void {
+    this.userID= sessionStorage.getItem('user')!
 
    
     
