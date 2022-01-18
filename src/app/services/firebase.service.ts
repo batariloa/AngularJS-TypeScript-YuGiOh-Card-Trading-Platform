@@ -6,7 +6,7 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { DocumentSnapshot, Firestore } from 'firebase/firestore';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { OrderInfo, Proizvod, User, UserData } from '../redux/cart.model';
 import { SessionServiceService } from './session-service.service';
 import { identifierName } from '@angular/compiler';
@@ -19,6 +19,7 @@ export class FirebaseService {
   transakcije: Observable<any[]> = new Observable;
   user: Observable<any> = new Observable
   oglas:Observable<any> = new Observable;
+  private usrname = new Subject<String>();
 
 
   constructor(public firebaseAuth: AngularFireAuth, public firestore: AngularFirestore, private firebase: AngularFireDatabase, private session: SessionServiceService) {
@@ -42,6 +43,7 @@ export class FirebaseService {
       
 
           sessionStorage.setItem('username', val.data().displayName)
+          this.usrname.next(val.data().displayName)
        
 
         })
@@ -177,5 +179,10 @@ export class FirebaseService {
 
 
 
+  getUsername(): Observable<String> {
+    return this.usrname.asObservable();
+  
+
+}
 
 }

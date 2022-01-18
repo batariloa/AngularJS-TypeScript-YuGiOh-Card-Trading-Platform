@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { AppState } from 'src/app/models/app.state';
 import { selectCountProducts, selectPriceKorpa } from 'src/app/redux/cart.selectors';
 import { DoBootstrap } from '@angular/core';
@@ -25,8 +25,9 @@ export class NavbarComponent implements OnInit, OnChanges {
   countProizvod$: Observable<number>;
   sumProizvod$: Observable<number>;
   showCart: boolean = false;
-  username$:Observable<string> = new Observable;
+  username$:Observable<String> = new Observable;
   username: string = "";
+  
 
   @Output() logoutEmit: EventEmitter<boolean> = new EventEmitter();
 
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
  
-    this.username = sessionStorage.getItem('username')!;
+    this.username$= this.serviceLogin.getUsername()
 
  
   

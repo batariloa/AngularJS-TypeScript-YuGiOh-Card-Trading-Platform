@@ -117,7 +117,7 @@ sub:Subscription = new Subscription;
 
 async displayTransactions(id:string){
   this.odabranaTransakcija = id;
-  console.log("eo ga id " + id)
+ 
   this.prikaziTransakcije = true;
   (await this.firebase.getTransakcije()).subscribe(val=>
     {
