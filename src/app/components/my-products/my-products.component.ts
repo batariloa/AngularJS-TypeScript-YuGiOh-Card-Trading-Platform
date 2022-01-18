@@ -119,7 +119,7 @@ async displayTransactions(id:string){
   this.odabranaTransakcija = id;
   console.log("eo ga id " + id)
   this.prikaziTransakcije = true;
-  await (await this.firebase.getTransakcije()).subscribe(val=>
+  (await this.firebase.getTransakcije()).subscribe(val=>
     {
       this.transakcije = []
       val.forEach(element=>{
