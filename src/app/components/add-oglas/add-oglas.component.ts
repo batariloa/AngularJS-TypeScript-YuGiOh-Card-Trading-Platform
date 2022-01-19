@@ -90,6 +90,7 @@ dodajOglas(){
   
   this.fireService.addOglas(this.oglasDodaj);
      this.forma.reset()
+     this.submitted = false;
   }
   else{
     this.submitted=true;
