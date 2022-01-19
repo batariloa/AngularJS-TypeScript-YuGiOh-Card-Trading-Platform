@@ -11,7 +11,7 @@
             <input type="text"  class="form-control" 
             placeholder="Unesite ime karte.."
             [(ngModel)]="input"
-            [formControl]="control" 
+            formControlName="name"
             [matAutocomplete]="auto"
            >
      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getOptionName" (optionSelected)="promeniKartu($event.option.value)">
@@ -19,15 +19,11 @@
          {{karta.name}}
        </mat-option>
      </mat-autocomplete>
+     <div class="invalid" *ngIf="this.submitted && controlM('name')?.errors">Ime je obavezno</div>
             <div *ngIf="" class="invalid-feedback"
             style="padding-right: 0% !important; margin-right: 20px;">
-              <div *ngIf="">Ime je obavezno</div>
-              <div *ngIf="">
-                Ime mora imati najmanje 4 karaktera
-              </div>
-              <div *ngIf="">
-                Ime ne sme imati vise od 20 karaktera
-              </div>
+             
+           
             </div>
         
           </div>
@@ -37,7 +33,7 @@
     
           <div class="col">
             <label for="formGroupExampleInput">Set</label>
-            <select  style="height: 33px;"
+            <select  style="height: 33px;" formControlName="set"
         (change)="promeniSet($event.target)"
             name="broj"  class="form-control" id="formGroupExampleInput" [value]="oglasDodaj.set" >
             
@@ -45,22 +41,16 @@
             
           </select>
     
-            <div *ngIf="" class="invalid-feedback">
-              <div *ngIf="">Broj sobe je obavezan</div>
-              <div *ngIf="">
-                Broj sobe ne može biti manji od 1
-              </div>
-              <div *ngIf="">
-                Broj sobe ne može biti veći od 9999
-              </div>
-            </div>
+            
+            <div class="invalid" *ngIf="this.submitted && controlM('set')?.errors">Set je obavezan</div>
           </div>
+ 
     
 
           <div class="col">
             <label for="formGroupExampleInput2">Stanje karte</label>
             <select [(ngModel)]="oglasDodaj.stanje"  style="height: 33px;"
-            formControlName="brojSobe"  
+            formControlName="stanje"            
             name="broj"  class="form-control" id="formGroupExampleInput" >
             
           <option value="Kao nova" selected>Kao nova</option>
@@ -68,48 +58,30 @@
           <option value="Blago oštećena">Blago oštećena</option>
           <option value="Vrlo oštećena">Vrlo oštećena</option>
           </select>
-            <div  class="invalid-feedback">
-              <div >Ulica je obavezna</div>
-              <div >
-                Ulica mora imati najmanje 6 karaktera
-              </div>
-              <div>
-                Ulica ne sme imati vise od 30 karaktera
-              </div>
-            </div>
+          <div class="invalid" *ngIf="this.submitted && controlM('stanje')?.errors">Stanje je obavezno</div>
           </div>
+              
+       
         </div>
     
     <div class="row" style=" ">
           <div class="col">
             <label for="formGroupExampleInput">Cena</label>
-            <input [(ngModel)]="oglasDodaj.price"
+            <input [(ngModel)]="oglasDodaj.price" formControlName="cena"
          
-            formControlName="city" 
+            formControlName="cena" 
             name="broj" type="number" class="form-control" id="formGroupExampleInput" placeholder="1000">
-            <div *ngIf="" class="invalid-feedback">
-              <div *ngIf="">Grad je obavezan</div>
-              <div *ngIf="">
-                Grad mora imati najmanje 3 karaktera
-              </div>
-            
-            </div>
+            <div class="invalid" *ngIf="this.submitted && controlM('cena')?.errors">Cena je obavezna</div>
           </div>
     
     
           <div class="col" style=" margin-bottom: 20px">
             <label for="formGroupExampleInput2">Količina</label>
-            <input  
+            <input   formControlName="kolicina"
             [(ngModel)]="oglasDodaj.quantity"
-            formControlName="cenaPoNoci" 
+            formControlName="kolicina" 
             type="number"  name="street"  class="form-control" id="formGroupExampleInput2" placeholder="1">
-            <div *ngIf="" class="invalid-feedback">
-              <div *ngIf="">Cena je obavezna</div>
-              <div *ngIf="">
-                Cena ne moze biti negativan broj.
-              </div>
-            
-            </div>
+            <div class="invalid" *ngIf="this.submitted && controlM('kolicina')?.errors">Količina je obavezna</div>
         
             </div>
           </div>

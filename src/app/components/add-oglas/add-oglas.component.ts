@@ -26,6 +26,7 @@ export class AddOglasComponent implements OnInit {
   kartaImgUrl = "https://i.imgur.com/UjbK2Wb.png";
   filtriraneKarte:Karta[] = [];
   setovi:card_sets[] = [];
+  submitted = false;
   input:string = ""
     karte$: Observable<Karta[]> = new Observable;
   constructor(private formBuilder: FormBuilder, private yuguiohService: ApiService, private fireService: FirebaseService) {
@@ -33,17 +34,16 @@ export class AddOglasComponent implements OnInit {
  
     this.forma = this.formBuilder.group(
       {
-        name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-        zvezdica: [
+        name: ['', [Validators.required, Validators.minLength(4),]],
+        set: [
           '',
           [
             Validators.required,
-            Validators.min(1),
-            Validators.max(5)
+        
           ]
         ],
-       city: ['', [Validators.required, Validators.minLength(3)]],
-       brojSobe: [
+       kolicina: ['', [Validators.required, Validators.min(1)]],
+       cena: [
           '',
           [
             Validators.required,
@@ -51,8 +51,8 @@ export class AddOglasComponent implements OnInit {
             Validators.max(9999)
           ]
         ],
-        ulica: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]],
-        cenaPoNoci: ['',[ Validators.required,Validators.min(1)]]
+        stanje: ['', [Validators.required, Validators.minLength(4)]],
+  
       }
     )
 
@@ -83,11 +83,17 @@ private filterCards(name:string){
 
 
 dodajOglas(){
+  
+  if(this.forma.valid){
   this.oglasDodaj.cardid = this.izabranaKartaId;
   this.oglasDodaj.username = sessionStorage.getItem('username')!;
   
   this.fireService.addOglas(this.oglasDodaj);
-     
+     this.forma.reset()
+  }
+  else{
+    this.submitted=true;
+  }
 }
 
 getOptionName(option:any): string {
@@ -106,5 +112,9 @@ promeniKartu(karta:Karta){
 promeniSet(set:any){
   this.oglasDodaj.set = set.value
 
+}
+public controlM(name:string){
+  console.log(this.forma.get(name)?.errors)
+  return this.forma.get(name);
 }
 }

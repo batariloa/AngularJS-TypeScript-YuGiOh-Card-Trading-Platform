@@ -68,7 +68,7 @@ input:string = "";
    
     })
     this.oglasiData = this.tempData
-    this.sub.unsubscribe
+    
   
 
  
